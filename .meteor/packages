@@ -7,6 +7,7 @@
 less
 iron:router@0.9.4
 fortawesome:fontawesome
+zimme:iron-router-active
 jquery
 dbarrett:dropzonejs
 
