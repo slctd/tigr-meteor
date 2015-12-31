@@ -4,13 +4,10 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-autopublish
 less
-iron:router
+iron:router@0.9.4
 fortawesome:fontawesome
-zimme:iron-router-active
 jquery
-okgrow:router-autoscroll
 dbarrett:dropzonejs
 
 twbs:bootstrap@3.3.6
@@ -27,3 +24,5 @@ random
 ejson
 spacebars
 check
+insecure
+accounts-password
