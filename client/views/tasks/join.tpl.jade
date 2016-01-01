@@ -1,0 +1,25 @@
+.page.auth
+  nav
+    .nav-group
+      a.js-menu.nav-item(href='#')
+        span.icon-list-unordered
+  .content-scrollable
+    .wrapper-auth
+      h1.title-auth Join.
+      p.subtitle-auth Joining allows you to make private lists
+      form
+        if errorMessages
+          .list-errors
+            each errorMessages
+              .list-item {{this}}
+          .input-symbol(class="{{errorClass 'email'}}")
+            input(type='email', name='email', placeholder='Your Email')
+            span.icon-email(title='Your Email')
+          .input-symbol(class="{{errorClass 'password'}}")
+            input(type='password', name='password', placeholder='Password')
+            span.icon-lock(title='Password')
+          .input-symbol(class="{{errorClass 'confirm'}}")
+            input(type='password', name='confirm', placeholder='Confirm Password')
+            span.icon-lock(title='Confirm Password')
+          button.btn-primary(type='submit') Join Now
+    a.link-auth-alt(href="{{pathFor 'signin'}}") Have an account? Sign in

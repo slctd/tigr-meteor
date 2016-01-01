@@ -96,5 +96,17 @@ Template.tasksNavigation.events({
         list._id = Lists.insert(list);
 
         Router.go('taskLists', list);
+    },
+
+    // Used only on OffCanvas layout
+    'click .close-canvas-menu' : function(){
+        $('body').toggleClass("mini-navbar");
     }
 });
+
+Template.tasksNavigation.rendered = function(){
+
+    // Initialize metisMenu
+    $('#side-menu').metisMenu();
+
+};

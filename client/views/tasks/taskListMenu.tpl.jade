@@ -1,0 +1,25 @@
+.ibox-tools
+  a.js-edit-list
+    i.fa.fa-pencil
+  a.dropdown-toggle(data-toggle='dropdown', href='#')
+    i.fa.fa-wrench
+  ul.dropdown-menu.dropdown-user.task-list-actions
+    if userId
+      li
+        a.js-toggle-list-privacy(href='#')
+          i.fa.fa-unlock
+          | Make Public
+    else
+      li
+        a.js-toggle-list-privacy(href='#')
+          i.fa.fa-lock
+          |  Make Private
+    li
+      a.js-delete-list(href='#')
+        i.fa.fa-trash
+        |  Delete
+  if fullScreen
+    a.fullscreen-link
+      i.fa.fa-expand
+  a.collapse-link
+    i.fa.fa-chevron-up

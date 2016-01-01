@@ -1,0 +1,32 @@
+.wrapper.wrapper-content
+  .row
+    .col-lg-6
+      .ibox.float-e-margins
+        .ibox-title
+          if editing
+            form.col-xs-6.js-edit-form.list-edit-form
+              .form-group
+                input.no-margins(type='text', name='name', value='{{name}}')
+                a.js-cancel(href='#')
+                  span.fa.fa-times.js-cancel(title='Cancel')
+          else
+            h5
+              span.title-wrapper {{name}}
+              span.badge.badge-primary.count-list {{incompleteCount}}
+          +taskListMenu
+        .ibox-content
+          form.js-todo-new.todo-new.input-symbol
+            input(type='text', placeholder='Type to add new tasks')
+            span.icon-add.js-todo-add
+          if todosReady
+            with _id
+              ul.todo-list.m-t.small-list
+                each todos this
+                  +task
+                else
+                  .wrapper-message
+                    .title-message No tasks here
+                    .subtitle-message Add new tasks using the field above
+          else
+            .wrapper-message
+              .title-message Loading tasks...

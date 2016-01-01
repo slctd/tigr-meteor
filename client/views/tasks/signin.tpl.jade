@@ -1,0 +1,22 @@
+.page.auth
+  nav
+    .nav-group
+      a.js-menu.nav-item(href='#')
+        span.icon-list-unordered
+  .content-scrollable
+    .wrapper-auth
+      h1.title-auth Sign In.
+      p.subtitle-auth Signing in allows you to view private lists
+      form
+        if errorMessages
+          .list-errors
+            each errorMessages
+              .list-item {{this}}
+        .input-symbol(class="{{errorClass 'email'}}")
+          input(type='email', name='email', placeholder='Your Email')
+          span.icon-email(title='Your Email')
+        .input-symbol(class="{{errorClass 'password'}}")
+          input(type='password', name='password', placeholder='Password')
+          span.icon-lock(title='Password')
+        button.btn-primary(type='submit') Sign in
+    a.link-auth-alt(href="{{pathFor 'join'}}") Need an account? Join Now.

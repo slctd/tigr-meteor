@@ -1,0 +1,8 @@
+li
+  .checkbox
+    .list-item(class='{{checkedClass}} {{editingClass}}')
+      input(type='checkbox', checked='{{checked}}', name='checked', id='{{id}}')
+      label(for='{{id}}')
+        input(type='text', value='{{text}}', placeholder='Task name')
+      a.js-delete-item.delete-item(href='#')
+        i.fa.fa-trash
