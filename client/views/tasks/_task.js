@@ -1,15 +1,18 @@
 var EDITING_KEY = 'EDITING_TODO_ID';
 
-Template.todosItem.helpers({
+Template.task.helpers({
   checkedClass: function() {
     return this.checked && 'checked';
   },
   editingClass: function() {
     return Session.equals(EDITING_KEY, this._id) && 'editing';
+  },
+  id: function() {
+    return 'task_' + this._id;
   }
 });
 
-Template.todosItem.events({
+Template.task.events({
   'change [type=checkbox]': function(event) {
     var checked = $(event.target).is(':checked');
     Todos.update(this._id, {$set: {checked: checked}});

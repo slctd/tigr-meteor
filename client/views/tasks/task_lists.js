@@ -6,7 +6,7 @@ var firstRender = true;
 var listRenderHold = LaunchScreen.hold();
 listFadeInHold = null;
 
-Template.listsShow.onRendered(function() {
+Template.taskLists.onRendered(function() {
   if (firstRender) {
     // Released in app-body.js
     listFadeInHold = LaunchScreen.hold();
@@ -32,7 +32,7 @@ Template.listsShow.onRendered(function() {
   };
 });
 
-Template.listsShow.helpers({
+Template.taskLists.helpers({
   editing: function() {
     return Session.get(EDITING_KEY);
   },
@@ -57,47 +57,9 @@ var editList = function(list, template) {
 var saveList = function(list, template) {
   Session.set(EDITING_KEY, false);
   Lists.update(list._id, {$set: {name: template.$('[name=name]').val()}});
-}
-
-var deleteList = function(list) {
-  // ensure the last public list cannot be deleted.
-  if (! list.userId && Lists.find({userId: {$exists: false}}).count() === 1) {
-    return alert("Sorry, you cannot delete the final public list!");
-  }
-
-  var message = "Are you sure you want to delete the list " + list.name + "?";
-  if (confirm(message)) {
-    // we must remove each item individually from the client
-    Todos.find({listId: list._id}).forEach(function(todo) {
-      Todos.remove(todo._id);
-    });
-    Lists.remove(list._id);
-
-    Router.go('home');
-    return true;
-  } else {
-    return false;
-  }
 };
 
-var toggleListPrivacy = function(list) {
-  if (! Meteor.user()) {
-    return alert("Please sign in or create an account to make private lists.");
-  }
-
-  if (list.userId) {
-    Lists.update(list._id, {$unset: {userId: true}});
-  } else {
-    // ensure the last public list cannot be made private
-    if (Lists.find({userId: {$exists: false}}).count() === 1) {
-      return alert("Sorry, you cannot make the final public list private!");
-    }
-
-    Lists.update(list._id, {$set: {userId: Meteor.userId()}});
-  }
-};
-
-Template.listsShow.events({
+Template.taskLists.events({
   'click .js-cancel': function() {
     Session.set(EDITING_KEY, false);
   },
@@ -142,14 +104,6 @@ Template.listsShow.events({
 
   'click .js-edit-list': function(event, template) {
     editList(this, template);
-  },
-
-  'click .js-toggle-list-privacy': function(event, template) {
-    toggleListPrivacy(this, template);
-  },
-
-  'click .js-delete-list': function(event, template) {
-    deleteList(this, template);
   },
 
   'click .js-todo-add': function(event, template) {

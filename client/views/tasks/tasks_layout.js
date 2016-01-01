@@ -32,7 +32,7 @@ Meteor.startup(function () {
   }, CONNECTION_ISSUE_TIMEOUT);
 });
 
-Template.appBody.onRendered(function() {
+Template.tasksLayout.onRendered(function() {
   this.find('#content-container')._uihooks = {
     insertElement: function(node, next) {
       $(node)
@@ -52,7 +52,7 @@ Template.appBody.onRendered(function() {
   };
 });
 
-Template.appBody.helpers({
+Template.tasksLayout.helpers({
   // We use #each on an array of one item so that the "list" template is
   // removed and a new copy is added when changing lists, which is
   // important for animation purposes. #each looks at the _id property of it's
@@ -78,7 +78,7 @@ Template.appBody.helpers({
   },
   activeListClass: function() {
     var current = Router.current();
-    if (current.route.name === 'listsShow' && current.params._id === this._id) {
+    if (current.route.name === 'taskLists' && current.params._id === this._id) {
       return 'active';
     }
   },
@@ -91,7 +91,7 @@ Template.appBody.helpers({
   }
 });
 
-Template.appBody.events({
+Template.tasksLayout.events({
   'click .js-menu': function() {
     Session.set(MENU_KEY, ! Session.get(MENU_KEY));
   },
@@ -116,8 +116,8 @@ Template.appBody.events({
 
     // if we are on a private list, we'll need to go to a public one
     var current = Router.current();
-    if (current.route.name === 'listsShow' && current.data().userId) {
-      Router.go('listsShow', Lists.findOne({userId: {$exists: false}}));
+    if (current.route.name === 'taskLists' && current.data().userId) {
+      Router.go('taskLists', Lists.findOne({userId: {$exists: false}}));
     }
   },
 
@@ -125,6 +125,6 @@ Template.appBody.events({
     var list = {name: Lists.defaultName(), incompleteCount: 0};
     list._id = Lists.insert(list);
 
-    Router.go('listsShow', list);
+    Router.go('taskLists', list);
   }
 });

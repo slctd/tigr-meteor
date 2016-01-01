@@ -1,6 +1,7 @@
 Router.configure({
     // we use the  appBody template to define the layout for the entire app
-    layoutTemplate: 'appBody',  //TodoList layout
+    layoutTemplate: 'tasksLayout',  //TodoList layout
+    //layoutTemplate: 'appBody',  //TodoList layout
     //layoutTemplate: 'mainLayout', //Inspinia layout
 
     // the appNotFound template is used for unknown routes and missing lists
@@ -26,8 +27,8 @@ Router.configure({
 Router.route('join');
 Router.route('signin');
 
-Router.route('listsShow', {
-    path: '/lists/:_id',
+Router.route('taskLists', {
+    path: '/task_lists/:_id',
     // subscribe to todos before the page is rendered but don't wait on the
     // subscription, we'll just render the items as they arrive
     onBeforeAction: function () {
@@ -49,7 +50,7 @@ Router.route('listsShow', {
 Router.route('home', {
     path: '/',
     action: function() {
-        Router.go('listsShow', Lists.findOne());
+        Router.go('taskLists', Lists.findOne());
     }
 });
 
