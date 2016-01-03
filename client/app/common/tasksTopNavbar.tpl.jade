@@ -4,8 +4,14 @@
       a#navbar-minimalize.minimalize-styl-2.btn.btn-primary(href='#')
         i.fa.fa-bars
     ul.nav.navbar-top-links.navbar-right
-      li
-        span.m-r-sm.text-muted.welcome-message  Welcome to INSPINIA+ Admin Theme.
+      if currentUser
+        li
+          a.count-info
+            i.fa.fa-bell
+            span.label.label-primary {{tasksCount}}
+      else
+        li
+          span.m-r-sm.text-muted.welcome-message  Welcome to EveMt cloud service.
       li
         if currentUser
           a.js-logout(href="{{pathFor route='login'}}")
