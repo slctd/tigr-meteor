@@ -1,25 +1,23 @@
-.page.auth
-  nav
-    .nav-group
-      a.js-menu.nav-item(href='#')
-        span.icon-list-unordered
-  .content-scrollable
-    .wrapper-auth
-      h1.title-auth Join.
-      p.subtitle-auth Joining allows you to make private lists
-      form
-        if errorMessages
-          .list-errors
-            each errorMessages
-              .list-item {{this}}
-          .input-symbol(class="{{errorClass 'email'}}")
-            input(type='email', name='email', placeholder='Your Email')
-            span.icon-email(title='Your Email')
-          .input-symbol(class="{{errorClass 'password'}}")
-            input(type='password', name='password', placeholder='Password')
-            span.icon-lock(title='Password')
-          .input-symbol(class="{{errorClass 'confirm'}}")
-            input(type='password', name='confirm', placeholder='Confirm Password')
-            span.icon-lock(title='Confirm Password')
-          button.btn-primary(type='submit') Join Now
-    a.link-auth-alt(href="{{pathFor 'signin'}}") Have an account? Sign in
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  div
+    h1.logo-name Ev
+  h3 Register to EveMt.
+  p Create account to make in yours.
+  form#join.text-left.m-t
+    if errorMessages
+      .alert.alert-danger.alert-dismissable
+        button(aria-hidden="true" data-dismiss="alert" class="close" type="button") ×
+        each errorMessages
+          | {{this}}<br/>
+    .form-group
+      input.form-control(type='email', name='email', placeholder='Email', required='')
+    .form-group
+      input.form-control(type='password', name='password' placeholder='Password', required='')
+    .form-group
+      input.form-control(type='password', name='confirm', placeholder='Confirm Password', required='')
+    button.btn.btn-primary.block.full-width.m-b(type='submit') Register
+    p.text-muted.text-center
+      small Already have an account?
+    a.btn.btn-sm.btn-white.btn-block(href="{{pathFor 'signin'}}") Login
+  p.m-t
+    small EveMt &copy; 2016

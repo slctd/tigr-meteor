@@ -1,22 +1,22 @@
-.page.auth
-  nav
-    .nav-group
-      a.js-menu.nav-item(href='#')
-        span.icon-list-unordered
-  .content-scrollable
-    .wrapper-auth
-      h1.title-auth Sign In.
-      p.subtitle-auth Signing in allows you to view private lists
-      form
-        if errorMessages
-          .list-errors
-            each errorMessages
-              .list-item {{this}}
-        .input-symbol(class="{{errorClass 'email'}}")
-          input(type='email', name='email', placeholder='Your Email')
-          span.icon-email(title='Your Email')
-        .input-symbol(class="{{errorClass 'password'}}")
-          input(type='password', name='password', placeholder='Password')
-          span.icon-lock(title='Password')
-        button.btn-primary(type='submit') Sign in
-    a.link-auth-alt(href="{{pathFor 'join'}}") Need an account? Join Now.
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  div
+    div
+      h1.logo-name Ev
+    h3 Welcome to EveMt.
+    p Login in to get yours.
+    form#signin.text-left.m-t(role="form")
+      if errorMessages
+        .alert.alert-danger.alert-dismissable
+          button(aria-hidden="true" data-dismiss="alert" class="close" type="button") ×
+          each errorMessages
+            | {{this}}<br/>
+      .form-group
+        input.form-control(type='email', name='email', placeholder='Username', required='')
+      .form-group
+        input.form-control(type='password', name='password', placeholder='Password', required='')
+      button.btn.btn-primary.block.full-width.m-b(type='submit') Login
+      p.text-muted.text-center
+        small Do not have an account?
+      a.btn.btn-sm.btn-white.btn-block(href="{{pathFor 'join'}}") Create an account
+    p.m-t
+      small EveMt &copy; 2016

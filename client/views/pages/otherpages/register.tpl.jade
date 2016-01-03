@@ -1,0 +1,22 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  div
+    h1.logo-name Ev
+  h3 Register to EveMt.
+  p Create account to see it in action.
+  form.m-t
+    if errorMessages
+      .list-errors
+        each errorMessages
+          .list-item {{this}}
+    .form-group
+      input.form-control(type='email', name='email', placeholder='Email', required='' class="{{errorClass 'email'}}")
+    .form-group
+      input.form-control(type='password', name='password' placeholder='Password', required='' class="{{errorClass 'password'}}")
+    .form-group
+      input.form-control(type='password', name='confirm', placeholder='Confirm Password', required='' class="{{errorClass 'confirm'}}")
+    button.btn.btn-primary.block.full-width.m-b(type='submit') Register
+    p.text-muted.text-center
+      small Already have an account?
+    a.btn.btn-sm.btn-white.btn-block(href="{{pathFor route='login'}}") Login
+  p.m-t
+    small EveMt &copy; 2016

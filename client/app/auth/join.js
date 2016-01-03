@@ -51,3 +51,25 @@ Template.join.events({
     });
   }
 });
+
+Template.join.rendered = function() {
+  $("#join").validate({
+    rules: {
+      email: {
+        required: true
+      },
+      password: {
+        required: true
+      },
+      confirm: {
+        required: true
+        //equalTo: template.$('[name=password]').val()
+      }
+    },
+    messages: {
+      email: {
+        email: "Please type proper email address"
+      }
+    }
+  })
+};
