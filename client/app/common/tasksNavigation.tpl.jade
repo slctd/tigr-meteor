@@ -17,10 +17,6 @@ nav.navbar-default.navbar-static-side(role='navigation')
             ul.dropdown-menu.animated.fadeInRight.m-t-xs
               li
                 a.js-logout(href="{{pathFor route='login'}}") Logout
-          else
-            .btns-group
-              a.btn-secondary(href="{{pathFor 'signin'}}") Sign In
-              a.btn-secondary(href="{{pathFor 'join'}}") Join
         .logo-element
           | IN+
       li.list-todos
