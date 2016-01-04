@@ -43,7 +43,7 @@ Router.route('taskLists', {
         }
     },
     data: function () {
-        return Lists.findOne(this.params._id);
+        return TaskLists.findOne(this.params._id);
     },
     action: function () {
         this.render();
@@ -54,7 +54,7 @@ Router.route('home', {
     path: '/',
     layoutTemplate: 'tasksLayout',
     action: function() {
-        Router.go('taskLists', Lists.findOne());
+        Router.go('taskLists', TaskLists.findOne());
     }
 });
 

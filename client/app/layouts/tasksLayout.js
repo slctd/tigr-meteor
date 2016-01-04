@@ -133,7 +133,7 @@ Template.tasksLayout.helpers({
     return Session.get(USER_MENU_KEY);
   },
   lists: function() {
-    return Lists.find();
+    return TaskLists.find();
   },
   activeListClass: function() {
     var current = Router.current();
@@ -176,13 +176,13 @@ Template.tasksLayout.events({
     // if we are on a private list, we'll need to go to a public one
     var current = Router.current();
     if (current.route.name === 'taskLists' && current.data().userId) {
-      Router.go('taskLists', Lists.findOne({userId: {$exists: false}}));
+      Router.go('taskLists', TaskLists.findOne({userId: {$exists: false}}));
     }
   },
 
   'click .js-new-list': function() {
-    var list = {name: Lists.defaultName(), incompleteCount: 0};
-    list._id = Lists.insert(list);
+    var list = {name: TaskLists.defaultName(), incompleteCount: 0};
+    list._id = TaskLists.insert(list);
 
     Router.go('taskLists', list);
   }

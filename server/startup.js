@@ -1,6 +1,6 @@
 // if the database is empty on server start, create some sample data.
 Meteor.startup(function () {
-  if (Lists.find().count() === 0) {
+  if (TaskLists.find().count() === 0) {
     var data = [
       {name: "Meteor Principles",
        items: ["Data on the Wire",
@@ -37,11 +37,11 @@ Meteor.startup(function () {
 
     var timestamp = (new Date()).getTime();
     _.each(data, function(list) {
-      var list_id = Lists.insert({name: list.name,
+      var list_id = TaskLists.insert({name: list.name,
         incompleteCount: list.items.length});
 
       _.each(list.items, function(text) {
-        Todos.insert({listId: list_id,
+        Tasks.insert({listId: list_id,
                       text: text,
                       createdAt: new Date(timestamp)});
         timestamp += 1; // ensure unique timestamp.

@@ -42,7 +42,7 @@ Template.taskLists.helpers({
   },
 
   todos: function(listId) {
-    return Todos.find({listId: listId}, {sort: {createdAt : -1}});
+    return Tasks.find({listId: listId}, {sort: {createdAt : -1}});
   }
 });
 
@@ -56,7 +56,7 @@ var editList = function(list, template) {
 
 var saveList = function(list, template) {
   Session.set(EDITING_KEY, false);
-  Lists.update(list._id, {$set: {name: template.$('[name=name]').val()}});
+  TaskLists.update(list._id, {$set: {name: template.$('[name=name]').val()}});
 };
 
 Template.taskLists.events({
@@ -117,13 +117,13 @@ Template.taskLists.events({
     if (! $input.val())
       return;
 
-    Todos.insert({
+    Tasks.insert({
       listId: this._id,
       text: $input.val(),
       checked: false,
       createdAt: new Date()
     });
-    Lists.update(this._id, {$inc: {incompleteCount: 1}});
+    TaskLists.update(this._id, {$inc: {incompleteCount: 1}});
     $input.val('');
   }
 });

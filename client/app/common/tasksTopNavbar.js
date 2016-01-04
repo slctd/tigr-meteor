@@ -48,7 +48,7 @@ Template.tasksTopNavbar.events({
         // if we are on a private list, we'll need to go to a public one
         var current = Router.current();
         if (current.route.name === 'taskLists' && current.data().userId) {
-            Router.go('taskLists', Lists.findOne({userId: {$exists: false}}));
+            Router.go('taskLists', TaskLists.findOne({userId: {$exists: false}}));
         }
     }
 });

@@ -4,30 +4,30 @@ var toggleListPrivacy = function(list) {
     }
 
     if (list.userId) {
-        Lists.update(list._id, {$unset: {userId: true}});
+        TaskLists.update(list._id, {$unset: {userId: true}});
     } else {
         // ensure the last public list cannot be made private
-        if (Lists.find({userId: {$exists: false}}).count() === 1) {
+        if (TaskLists.find({userId: {$exists: false}}).count() === 1) {
             return alert("Sorry, you cannot make the final public list private!");
         }
 
-        Lists.update(list._id, {$set: {userId: Meteor.userId()}});
+        TaskLists.update(list._id, {$set: {userId: Meteor.userId()}});
     }
 };
 
 var deleteList = function(list) {
     // ensure the last public list cannot be deleted.
-    if (! list.userId && Lists.find({userId: {$exists: false}}).count() === 1) {
+    if (! list.userId && TaskLists.find({userId: {$exists: false}}).count() === 1) {
         return alert("Sorry, you cannot delete the final public list!");
     }
 
     var message = "Are you sure you want to delete the list " + list.name + "?";
     if (confirm(message)) {
         // we must remove each item individually from the client
-        Todos.find({listId: list._id}).forEach(function(todo) {
-            Todos.remove(todo._id);
+        Tasks.find({listId: list._id}).forEach(function(todo) {
+            Tasks.remove(todo._id);
         });
-        Lists.remove(list._id);
+        TaskLists.remove(list._id);
 
         Router.go('home');
         return true;

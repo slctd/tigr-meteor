@@ -15,8 +15,8 @@ Template.task.helpers({
 Template.task.events({
   'change [type=checkbox]': function(event) {
     var checked = $(event.target).is(':checked');
-    Todos.update(this._id, {$set: {checked: checked}});
-    Lists.update(this.listId, {$inc: {incompleteCount: checked ? -1 : 1}});
+    Tasks.update(this._id, {$set: {checked: checked}});
+    TaskLists.update(this.listId, {$inc: {incompleteCount: checked ? -1 : 1}});
   },
   
   'focus input[type=text]': function(event) {
@@ -40,14 +40,14 @@ Template.task.events({
   // we don't flood the server with updates (handles the event at most once 
   // every 300ms)
   'keyup input[type=text]': _.throttle(function(event) {
-    Todos.update(this._id, {$set: {text: event.target.value}});
+    Tasks.update(this._id, {$set: {text: event.target.value}});
   }, 300),
   
   // handle mousedown otherwise the blur handler above will swallow the click
   // on iOS, we still require the click event so handle both
   'mousedown .js-delete-item, click .js-delete-item': function() {
-    Todos.remove(this._id);
+    Tasks.remove(this._id);
     if (! this.checked)
-      Lists.update(this.listId, {$inc: {incompleteCount: -1}});
+      TaskLists.update(this.listId, {$inc: {incompleteCount: -1}});
   }
 });
