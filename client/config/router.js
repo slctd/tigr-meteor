@@ -1,8 +1,6 @@
 Router.configure({
     // we use the  appBody template to define the layout for the entire app
-    layoutTemplate: 'tasksLayout',  //TodoList layout
-    //layoutTemplate: 'appBody',  //TodoList layout
-    //layoutTemplate: 'mainLayout', //Inspinia layout
+    layoutTemplate: 'mainLayout', //Inspinia layout
 
     // the appNotFound template is used for unknown routes and missing lists
     notFoundTemplate: 'notFound',
@@ -24,11 +22,16 @@ Router.configure({
 // TodoList routes
 //
 
-Router.route('join');
-Router.route('signin');
+Router.route('join', {
+    layoutTemplate: 'tasksLayout'
+});
+Router.route('signin', {
+    layoutTemplate: 'tasksLayout'
+});
 
 Router.route('taskLists', {
     path: '/task_lists/:_id',
+    layoutTemplate: 'tasksLayout',
     // subscribe to todos before the page is rendered but don't wait on the
     // subscription, we'll just render the items as they arrive
     onBeforeAction: function () {
@@ -49,6 +52,7 @@ Router.route('taskLists', {
 
 Router.route('home', {
     path: '/',
+    layoutTemplate: 'tasksLayout',
     action: function() {
         Router.go('taskLists', Lists.findOne());
     }
@@ -61,19 +65,27 @@ Router.route('home', {
 Router.route('dashboard1', function () {
     this.render('dashboard1');
 });
+
 Router.route('dashboard2', function () {
     this.render('dashboard2');
 });
+
 Router.route('dashboard3', function () {
     this.render('dashboard3');
 });
-Router.route('dashboard4', function () {
-    this.render('dashboard4');
-    this.layout('layout2');
+
+Router.route('dashboard4', {
+    path: 'dashboard4',
+    layoutTemplate: 'layout2',
+    action: function() {
+        this.render();
+    }
 });
+
 Router.route('dashboard4l', function () {
     this.render('dashboard4l');
 });
+
 Router.route('dashboard5', function () {
     this.render('dashboard5');
 });
