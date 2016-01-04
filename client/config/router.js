@@ -54,28 +54,27 @@ Router.route('home', {
     }
 });
 
-
 //
 // Dashboards routes
 //
 
-Router.route('/dashboard1', function () {
+Router.route('dashboard1', function () {
     this.render('dashboard1');
 });
-Router.route('/dashboard2', function () {
+Router.route('dashboard2', function () {
     this.render('dashboard2');
 });
-Router.route('/dashboard3', function () {
+Router.route('dashboard3', function () {
     this.render('dashboard3');
 });
-Router.route('/dashboard4', function () {
+Router.route('dashboard4', function () {
     this.render('dashboard4');
     this.layout('layout2');
 });
-Router.route('/dashboard4l', function () {
+Router.route('dashboard4l', function () {
     this.render('dashboard4l');
 });
-Router.route('/dashboard5', function () {
+Router.route('dashboard5', function () {
     this.render('dashboard5');
 });
 
@@ -84,7 +83,7 @@ Router.route('/dashboard5', function () {
 // Layouts route
 //
 
-Router.route('/layouts', function () {
+Router.route('layouts', function () {
     this.render('layouts');
 });
 
@@ -92,31 +91,31 @@ Router.route('/layouts', function () {
 // Graphs routes
 //
 
-Router.route('/graphFlot', function () {
+Router.route('graphFlot', function () {
     this.render('graphFlot');
 });
 
-Router.route('/graphRickshaw', function () {
+Router.route('graphRickshaw', function () {
     this.render('graphRickshaw');
 });
 
-Router.route('/graphChartJs', function () {
+Router.route('graphChartJs', function () {
     this.render('graphChartJs');
 });
 
-Router.route('/graphChartist', function () {
+Router.route('graphChartist', function () {
     this.render('graphChartist');
 });
 
-Router.route('/c3charts', function () {
+Router.route('c3charts', function () {
     this.render('c3charts');
 });
 
-Router.route('/graphPeity', function () {
+Router.route('graphPeity', function () {
     this.render('graphPeity');
 });
 
-Router.route('/graphSparkline', function () {
+Router.route('graphSparkline', function () {
     this.render('graphSparkline');
 });
 
@@ -124,19 +123,19 @@ Router.route('/graphSparkline', function () {
 // Mailbox
 //
 
-Router.route('/mailbox', function () {
+Router.route('mailbox', function () {
     this.render('mailbox');
 });
 
-Router.route('/emailView', function () {
+Router.route('emailView', function () {
     this.render('emailView');
 });
 
-Router.route('/emailCompose', function () {
+Router.route('emailCompose', function () {
     this.render('emailCompose');
 });
 
-Router.route('/emailTemplates', function () {
+Router.route('emailTemplates', function () {
     this.render('emailTemplates');
 });
 
@@ -144,7 +143,7 @@ Router.route('/emailTemplates', function () {
 // Widgets
 //
 
-Router.route('/widgets', function () {
+Router.route('widgets', function () {
     this.render('widgets');
 });
 
@@ -152,7 +151,7 @@ Router.route('/widgets', function () {
 // Metrics
 //
 
-Router.route('/metrics', function () {
+Router.route('metrics', function () {
     this.render('metrics');
 });
 
@@ -160,27 +159,27 @@ Router.route('/metrics', function () {
 // Forms
 //
 
-Router.route('/formBasic', function () {
+Router.route('formBasic', function () {
     this.render('formBasic');
 });
 
-Router.route('/formAdvanced', function () {
+Router.route('formAdvanced', function () {
     this.render('formAdvanced');
 });
 
-Router.route('/formWizard', function () {
+Router.route('formWizard', function () {
     this.render('formWizard');
 });
 
-Router.route('/formUpload', function () {
+Router.route('formUpload', function () {
     this.render('formUpload');
 });
 
-Router.route('/textEditor', function () {
+Router.route('textEditor', function () {
     this.render('textEditor');
 });
 
-Router.route('/markdown', function () {
+Router.route('markdown', function () {
     this.render('markdown');
 });
 
@@ -188,83 +187,88 @@ Router.route('/markdown', function () {
 // App Views
 //
 
-Router.route('/contacts', function () {
+Router.route('contacts', function () {
     this.render('contacts');
 });
 
-Router.route('/profile', function () {
+Router.route('profile', function () {
     this.render('profile');
 });
 
-Router.route('/profile2', function () {
+Router.route('profile2', function () {
     this.render('profile2');
 });
 
-Router.route('/contacts2', function () {
+Router.route('contacts2', function () {
     this.render('contacts2');
 });
 
-Router.route('/projects', function () {
+Router.route('projects', function () {
     this.render('projects');
 });
 
-Router.route('/projectDetail', function () {
+Router.route('projectDetail', function () {
     this.render('projectDetail');
 });
 
-Router.route('/teamsBoard', function () {
+Router.route('teamsBoard', function () {
     this.render('teamsBoard');
 });
 
-Router.route('/socialFeed', function () {
+Router.route('socialFeed', function () {
     this.render('socialFeed');
 });
 
-Router.route('/clients', function () {
+Router.route('clients', function () {
     this.render('clients');
 });
 
-Router.route('/fullHeight', function () {
-    this.render('fullHeight');
+//Outlook view
+Router.route('fullHeight', {
+    path: 'fullHeight',
+    layoutTemplate: 'mainLayout',
+    action: function() {
+        this.render();
+    }
 });
 
-Router.route('/offCanvas', function () {
+Router.route('offCanvas', function () {
     this.render('offCanvas');
 });
 
-Router.route('/voteList', function () {
+Router.route('voteList', function () {
     this.render('voteList');
 });
 
-Router.route('/fileManager', function () {
+Router.route('fileManager', function () {
     this.render('fileManager');
 });
 
-Router.route('/calendar', function () {
+Router.route('calendar', function () {
     this.render('calendar');
 });
 
-Router.route('/issueTracker', function () {
+Router.route('issueTracker', function () {
     this.render('issueTracker');
 });
 
-Router.route('/blog', function () {
+Router.route('blog', function () {
     this.render('blog');
 });
 
-Router.route('/article', function () {
+Router.route('article', function () {
     this.render('article');
 });
 
-Router.route('/faq', function () {
+Router.route('faq', function () {
     this.render('faq');
 });
 
-Router.route('/timelineOne', function () {
+Router.route('timelineOne', function () {
     this.render('timelineOne');
 });
 
-Router.route('/pinBoard', function () {
+Router.route('pinBoard', function () {
     this.render('pinBoard');
 });
 
@@ -272,55 +276,79 @@ Router.route('/pinBoard', function () {
 // Other pages
 //
 
-Router.route('/searchResult', function () {
+Router.route('searchResult', function () {
     this.render('searchResult');
 });
 
-Router.route('/lockScreen', function () {
-    this.render('lockScreen');
-    this.layout('blankLayout')
-});
-
-Router.route('/invoice', function () {
+Router.route('invoice', function () {
     this.render('invoice');
 });
 
-Router.route('/invoicePrint', function () {
-    this.render('invoicePrint');
-    this.layout('blankLayout')
+Router.route('invoicePrint', {
+    path: 'invoicePrint',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
 });
 
-Router.route('/login', function () {
-    this.render('login');
-    this.layout('blankLayout')
+Router.route('login', {
+    path: 'login',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
 });
 
-Router.route('/loginTwo', function () {
-    this.render('loginTwo');
-    this.layout('blankLayout')
+Router.route('loginTwo', {
+    path: 'loginTwo',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
 });
 
-Router.route('/forgotPassword', function () {
-    this.render('forgotPassword');
-    this.layout('blankLayout')
+Router.route('lockScreen', {
+    path: 'lockScreen',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
 });
 
-Router.route('/register', function () {
-    this.render('register');
-    this.layout('blankLayout')
+Router.route('forgotPassword', {
+    path: 'forgotPassword',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
 });
 
-Router.route('/errorOne', function () {
-    this.render('errorOne');
-    this.layout('blankLayout')
+Router.route('register', {
+    path: 'register',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
 });
 
-Router.route('/errorTwo', function () {
-    this.render('errorTwo');
-    this.layout('blankLayout')
+Router.route('errorOne', {
+    path: 'errorOne',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
 });
 
-Router.route('/emptyPage', function () {
+Router.route('errorTwo', {
+    path: 'errorTwo',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
+});
+
+Router.route('emptyPage', function () {
     this.render('emptyPage');
 });
 
@@ -328,95 +356,95 @@ Router.route('/emptyPage', function () {
 // Miscellaneous
 //
 
-Router.route('/toastrNotification', function () {
+Router.route('toastrNotification', function () {
     this.render('toastrNotification');
 });
 
-Router.route('/nestableList', function () {
+Router.route('nestableList', function () {
     this.render('nestableList');
 });
 
-Router.route('/agileBoard', function () {
+Router.route('agileBoard', function () {
     this.render('agileBoard');
 });
 
-Router.route('/timelineTwo', function () {
+Router.route('timelineTwo', function () {
     this.render('timelineTwo');
 });
 
-Router.route('/diff', function () {
+Router.route('diff', function () {
     this.render('diff');
 });
 
-Router.route('/i18support', function () {
+Router.route('i18support', function () {
     this.render('i18support');
 });
 
-Router.route('/sweetAlert', function () {
+Router.route('sweetAlert', function () {
     this.render('sweetAlert');
 });
 
-Router.route('/idleTimer', function () {
+Router.route('idleTimer', function () {
     this.render('idleTimer');
 });
 
-Router.route('/truncate', function () {
+Router.route('truncate', function () {
     this.render('truncate');
 });
 
-Router.route('/spinners', function () {
+Router.route('spinners', function () {
     this.render('spinners');
 });
 
-Router.route('/liveFavicon', function () {
+Router.route('liveFavicon', function () {
     this.render('liveFavicon');
 });
 
-Router.route('/googleMaps', function () {
+Router.route('googleMaps', function () {
     this.render('googleMaps');
 });
 
-Router.route('/codeEditor', function () {
+Router.route('codeEditor', function () {
     this.render('codeEditor');
 });
 
-Router.route('/modalWindow', function () {
+Router.route('modalWindow', function () {
     this.render('modalWindow');
 });
 
-Router.route('/clipboard', function () {
+Router.route('clipboard', function () {
     this.render('clipboard');
 });
 
-Router.route('/forumView', function () {
+Router.route('forumView', function () {
     this.render('forumView');
 });
 
-Router.route('/forumDetail', function () {
+Router.route('forumDetail', function () {
     this.render('forumDetail');
 });
 
-Router.route('/validation', function () {
+Router.route('validation', function () {
     this.render('validation');
 });
 
-Router.route('/treeView', function () {
+Router.route('treeView', function () {
     this.render('treeView');
 });
 
-Router.route('/loadingButtons', function () {
+Router.route('loadingButtons', function () {
     this.render('loadingButtons');
 });
 
-Router.route('/chatView', function () {
+Router.route('chatView', function () {
     this.render('chatView');
 });
 
-Router.route('/masonry', function () {
+Router.route('masonry', function () {
     this.render('masonry');
 });
 
-Router.route('/tour', function () {
+Router.route('tour', function () {
     this.render('tour');
 });
 
@@ -424,43 +452,43 @@ Router.route('/tour', function () {
 // UI Elements
 //
 
-Router.route('/typography', function () {
+Router.route('typography', function () {
     this.render('typography');
 });
 
-Router.route('/icons', function () {
+Router.route('icons', function () {
     this.render('icons');
 });
 
-Router.route('/draggablePanels', function () {
+Router.route('draggablePanels', function () {
     this.render('draggablePanels');
 });
 
-Router.route('/resizeablePanels', function () {
+Router.route('resizeablePanels', function () {
     this.render('resizeablePanels');
 });
 
-Router.route('/buttons', function () {
+Router.route('buttons', function () {
     this.render('buttons');
 });
 
-Router.route('/video', function () {
+Router.route('video', function () {
     this.render('video');
 });
 
-Router.route('/tabsPanels', function () {
+Router.route('tabsPanels', function () {
     this.render('tabsPanels');
 });
 
-Router.route('/tabs', function () {
+Router.route('tabs', function () {
     this.render('tabs');
 });
 
-Router.route('/notifications', function () {
+Router.route('notifications', function () {
     this.render('notifications');
 });
 
-Router.route('/badgesLabels', function () {
+Router.route('badgesLabels', function () {
     this.render('badgesLabels');
 });
 
@@ -468,7 +496,7 @@ Router.route('/badgesLabels', function () {
 // Grid Options
 //
 
-Router.route('/gridOptions', function () {
+Router.route('gridOptions', function () {
     this.render('gridOptions');
 });
 
@@ -476,15 +504,15 @@ Router.route('/gridOptions', function () {
 // Tables
 //
 
-Router.route('/tableStatic', function () {
+Router.route('tableStatic', function () {
     this.render('tableStatic');
 });
 
-Router.route('/dataTables', function () {
+Router.route('dataTables', function () {
     this.render('dataTables');
 });
 
-Router.route('/fooTables', function () {
+Router.route('fooTables', function () {
     this.render('fooTables');
 });
 
@@ -492,31 +520,31 @@ Router.route('/fooTables', function () {
 // E-commerce
 //
 
-Router.route('/productsGrid', function () {
+Router.route('productsGrid', function () {
     this.render('productsGrid');
 });
 
-Router.route('/productsList', function () {
+Router.route('productsList', function () {
     this.render('productsList');
 });
 
-Router.route('/productEdit', function () {
+Router.route('productEdit', function () {
     this.render('productEdit');
 });
 
-Router.route('/shopingCart', function () {
+Router.route('shopingCart', function () {
     this.render('shopingCart');
 });
 
-Router.route('/orders', function () {
+Router.route('orders', function () {
     this.render('orders');
 });
 
-Router.route('/productDetail', function () {
+Router.route('productDetail', function () {
     this.render('productDetail');
 });
 
-Router.route('/payments', function () {
+Router.route('payments', function () {
     this.render('payments');
 });
 
@@ -524,15 +552,15 @@ Router.route('/payments', function () {
 // Gallery
 //
 
-Router.route('/gallery', function () {
+Router.route('gallery', function () {
     this.render('gallery');
 });
 
-Router.route('/carusela', function () {
+Router.route('carusela', function () {
     this.render('carusela');
 });
 
-Router.route('/slick', function () {
+Router.route('slick', function () {
     this.render('slick');
 });
 
@@ -541,7 +569,7 @@ Router.route('/slick', function () {
 // CSS Animations
 //
 
-Router.route('/cssAnimations', function () {
+Router.route('cssAnimations', function () {
     this.render('cssAnimations');
 });
 
@@ -549,22 +577,27 @@ Router.route('/cssAnimations', function () {
 // Landing page
 //
 
-Router.route('/landing', function () {
-    this.render('landing');
-    this.layout('blankLayout')
+Router.route('landing', {
+    path: 'landing',
+    layoutTemplate: 'blankLayout',
+    action: function() {
+        this.render();
+    }
 });
+
+
 
 //
 // Other pages routes
 //
-Router.route('/notFound', function () {
+Router.route('notFound', function () {
     this.render('notFound');
 });
 
 // Default route
 // You can use direct this.render('template')
 // We use Router.go method because dashboard1 is our nested view in menu
-Router.route('/', function () {
+Router.route('', function () {
     Router.go('dashboard1');
 });
 

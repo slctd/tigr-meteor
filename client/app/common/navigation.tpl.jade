@@ -1,0 +1,350 @@
+nav.navbar-default.navbar-static-side(role='navigation')
+  .sidebar-collapse
+    // Close canvas menu used only on OffCanvas page
+    // You can remove this tag if you dont use offCanvas menu
+    a.close-canvas-menu
+      i.fa.fa-times
+    // End offCanvas menu toggle
+    ul#side-menu.nav.metismenu
+      li.nav-header
+        .dropdown.profile-element
+          if currentUser
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              span.clear
+                span.block.m-t-xs
+                  strong.font-bold {{email}}
+                  if userMenuOpen
+                    span.icon-arrow-up
+                  else
+                    span.icon-arrow-down
+            ul.dropdown-menu.animated.fadeInRight.m-t-xs
+              li
+                a.js-logout(href="{{pathFor 'login'}}") Logout
+        .logo-element
+          | Ev
+      li.list-todos
+        a(href='#')
+          i.fa.fa-check-square
+          span.nav-label(data-i18n='nav.dashboard')
+            | Task Lists
+          span.fa.arrow
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='lists' className='in'}}")
+          each lists
+            li(class="{{isActiveRoute regex=activeListClass}}")
+              a(href="{{pathFor 'taskLists'}}" class="{{isActiveRoute regex=activeListClass}}") {{name}}
+                if userId
+                  span.icon-lock
+                if incompleteCount
+                  span.label.label-primary.pull-right {{incompleteCount}}
+          li
+            a.js-new-list.link-list-new
+              span.fa.fa-plus
+              |  New List
+      li(class="{{isActiveRoute regex='dashboard1|dashboard2|dashboard3|dashboard4l|dashboard5'}}")
+        a(href='#')
+          i.fa.fa-th-large
+          span.nav-label(data-i18n='nav.dashboard') Dashboards
+          span.fa.arrow
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='dashboard1|dashboard2|dashboard3|dashboard4l|dashboard5' className='in'}}")
+          li(class="{{isActiveRoute regex='dashboard1'}}")
+            a(href="{{pathFor 'dashboard1'}}") Dashboard v.1
+          li(class="{{isActiveRoute regex='dashboard2'}}")
+            a(href="{{pathFor 'dashboard2'}}") Dashboard v.2
+          li(class="{{isActiveRoute regex='dashboard3'}}")
+            a(href="{{pathFor 'dashboard3'}}") Dashboard v.3
+          li(class="{{isActiveRoute regex='dashboard4l'}}")
+            a(href="{{pathFor 'dashboard4l'}}") Dashboard v.4
+          li(class="{{isActiveRoute regex='dashboard5'}}")
+            a(href="{{pathFor 'dashboard5'}}")
+              | Dashboard v.5
+              span.label.label-primary.pull-right NEW
+      li(class="{{isActiveRoute regex='layouts'}}")
+        a(href="{{pathFor 'layouts'}}")
+          i.fa.fa-diamond
+          span.nav-label(data-i18n='nav.layouts') Layouts
+      li(class="{{isActiveRoute regex='c3charts|graphFlot|graphMorris|graphRickshaw|graphChartJs|graphPeity|graphSparkline|graphChartist'}}")
+        a(href='#')
+          i.fa.fa-bar-chart-o
+          span.nav-label(data-i18n='nav.graphs') Graphs
+          span.fa.arrow
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='c3charts|graphFlot|graphMorris|graphRickshaw|graphChartJs|graphPeity|graphSparkline|graphChartist' className='in'}}")
+          li(class="{{isActiveRoute regex='graphFlot'}}")
+            a(href="{{pathFor 'graphFlot'}}") Flot Charts
+          li(class="{{isActiveRoute regex='graphRickshaw'}}")
+            a(href="{{pathFor 'graphRickshaw'}}") Rickshaw Charts
+          li(class="{{isActiveRoute regex='graphChartJs'}}")
+            a(href="{{pathFor 'graphChartJs'}}") Chart.js
+          li(class="{{isActiveRoute regex='graphChartist'}}")
+            a(href="{{pathFor 'graphChartist'}}") Chartist
+          li(class="{{isActiveRoute regex='c3charts'}}")
+            a(href="{{pathFor 'c3charts'}}") c3 charts
+          li(class="{{isActiveRoute regex='graphPeity'}}")
+            a(href="{{pathFor 'graphPeity'}}") Peity Charts
+          li(class="{{isActiveRoute regex='graphSparkline'}}")
+            a(href="{{pathFor 'graphSparkline'}}") Sparkline Charts
+      li(class="{{isActiveRoute regex='mailbox|emailView|emailCompose|emailTemplates'}}")
+        a(href='#')
+          i.fa.fa-envelope
+          span.nav-label(data-i18n='nav.mailbox') Mailbox
+          span.label.label-warning.pull-right 16/24
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='mailbox|emailView|emailCompose|emailTemplates' className='in'}}")
+          li(class="{{isActiveRoute regex='mailbox'}}")
+            a(href="{{pathFor 'mailbox'}}") Inbox
+          li(class="{{isActiveRoute regex='emailView'}}")
+            a(href="{{pathFor 'emailView'}}") Email view
+          li(class="{{isActiveRoute regex='emailCompose'}}")
+            a(href="{{pathFor 'emailCompose'}}") Compose email
+          li(class="{{isActiveRoute regex='emailTemplates'}}")
+            a(href="{{pathFor 'emailTemplates'}}") Email templates
+      li(class="{{isActiveRoute regex='metrics'}}")
+        a(href="{{pathFor 'metrics'}}")
+          i.fa.fa-pie-chart
+          span.nav-label(data-i18n='nav.metrics') Metrics
+      li(class="{{isActiveRoute regex='widgets'}}")
+        a(href="{{pathFor 'widgets'}}")
+          i.fa.fa-flask
+          span.nav-label(data-i18n='nav.widgets') Widgets
+      li(class="{{isActiveRoute regex='markdown|formBasic|formAdvanced|formWizard|formUpload|textEditor'}}")
+        a(href='#')
+          i.fa.fa-edit
+          span.nav-label(data-i18n='nav.forms') Forms
+          span.fa.arrow
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='markdown|formBasic|formAdvanced|formWizard|formUpload|textEditor' className='in'}}")
+          li(class="{{isActiveRoute regex='formBasic'}}")
+            a(href="{{pathFor 'formBasic'}}") Basic form
+          li(class="{{isActiveRoute regex='formAdvanced'}}")
+            a(href="{{pathFor 'formAdvanced'}}") Advanced Plugins
+          li(class="{{isActiveRoute regex='formWizard'}}")
+            a(href="{{pathFor 'formWizard'}}") Wizard
+          li(class="{{isActiveRoute regex='formUpload'}}")
+            a(href="{{pathFor 'formUpload'}}") File Upload
+          li(class="{{isActiveRoute regex='textEditor'}}")
+            a(href="{{pathFor 'textEditor'}}") Text Editor
+          li(class="{{isActiveRoute regex='markdown'}}")
+            a(href="{{pathFor 'markdown'}}") Markdown
+      li(class="{{isActiveRoute regex='contacts2|profile2|voteList|contacts|profile|projects|projectDetail|teamsBoard|clients|fullHeight|fileManager|calendar|issueTracker|blog|article|faq|timelineOne|pinBoard|socialFeed'}}")
+        a(href='#')
+          i.fa.fa-desktop
+          span.nav-label(data-i18n='nav.appviews') App Views
+          span.pull-right.label.label-primary SPECIAL
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='contacts2|profile2|voteList|contacts|profile|projects|projectDetail|teamsBoard|clients|fullHeight|fileManager|Calendar|issueTracker|blog|article|faq|timelineOne|pinBoard|socialFeed' className='in'}}")
+          li(class="{{isActiveRoute regex='contacts'}}")
+            a(href="{{pathFor 'contacts'}}") Contacts
+          li(class="{{isActiveRoute regex='profile'}}")
+            a(href="{{pathFor 'profile'}}") Profile
+          li(class="{{isActiveRoute regex='profile2'}}")
+            a(href="{{pathFor 'profile2'}}") Profile 2
+          li(class="{{isActiveRoute regex='contacts2'}}")
+            a(href="{{pathFor 'contacts2'}}") Contact 2
+          li(class="{{isActiveRoute regex='projects'}}")
+            a(href="{{pathFor 'projects'}}") Projects
+          li(class="{{isActiveRoute regex='projectDetail'}}")
+            a(href="{{pathFor 'projectDetail'}}") Project detail
+          li(class="{{isActiveRoute regex='teamsBoard'}}")
+            a(href="{{pathFor 'teamsBoard'}}") Teams board
+          li(class="{{isActiveRoute regex='socialFeed'}}")
+            a(href="{{pathFor 'socialFeed'}}") Social feed
+          li(class="{{isActiveRoute regex='clients'}}")
+            a(href="{{pathFor 'clients'}}") Clients
+          li(class="{{isActiveRoute regex='fullHeight'}}")
+            a(href="{{pathFor 'fullHeight'}}") Outlook view
+          li(class="{{isActiveRoute regex='voteList'}}")
+            a(href="{{pathFor 'voteList'}}") Vote list
+          li(class="{{isActiveRoute regex='fileManager'}}")
+            a(href="{{pathFor 'fileManager'}}") File manager
+          li(class="{{isActiveRoute regex='calendar'}}")
+            a(href="{{pathFor 'calendar'}}") Calendar
+          li(class="{{isActiveRoute regex='issueTracker'}}")
+            a(href="{{pathFor 'issueTracker'}}") Issue tracker
+          li(class="{{isActiveRoute regex='blog'}}")
+            a(href="{{pathFor 'blog'}}") Blog
+          li(class="{{isActiveRoute regex='article'}}")
+            a(href="{{pathFor 'article'}}") Article
+          li(class="{{isActiveRoute regex='faq'}}")
+            a(href="{{pathFor 'faq'}}") FAQ
+          li(class="{{isActiveRoute regex='timelineOne'}}")
+            a(href="{{pathFor 'timelineOne'}}") Timeline
+          li(class="{{isActiveRoute regex='pinBoard'}}")
+            a(href="{{pathFor 'pinBoard'}}") Pin board
+      li(class="{{isActiveRoute regex='searchResult|invoice|emptyPage'}}")
+        a(href='#')
+          i.fa.fa-files-o
+          span.nav-label(data-i18n='nav.otherpages') Other Pages
+          span.fa.arrow
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='searchResult|invoice|emptyPage' className='in'}}")
+          li(class="{{isActiveRoute regex='searchResult'}}")
+            a(href="{{pathFor 'searchResult'}}") Search results
+          li
+            a(href="{{pathFor 'lockScreen'}}") Lockscreen
+          li(class="{{isActiveRoute regex='invoice'}}")
+            a(href="{{pathFor 'invoice'}}") Invoice
+          li
+            a(href="{{pathFor 'login'}}") Login
+          li
+            a(href="{{pathFor 'loginTwo'}}") Login v.2
+          li
+            a(href="{{pathFor 'forgotPassword'}}") Forgot password
+          li
+            a(href="{{pathFor 'register'}}") Register
+          li
+            a(href="{{pathFor 'errorOne'}}") 404 Page
+          li
+            a(href="{{pathFor 'errorTwo'}}") 500 Page
+          li(class="{{isActiveRoute regex='emptyPage'}}")
+            a(href="{{pathFor 'emptyPage'}}") Empty page
+      li(class="{{isActiveRoute regex='clipboard|i18support|tour|truncate|loadingButtons|masonry|toastrNotification|nestableList|agileBoard|timelineTwo|diff|idleTimer|spinners|liveFavicon|googleMaps|codeEditor|modalWindow|forumView|validation|treeView|chatView|sweetAlert'}}")
+        a(href='#')
+          i.fa.fa-globe
+          span.nav-label(data-i18n='nav.miscellaneous') Miscellaneous
+          span.label.label-info.pull-right NEW
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='clipboard|i18support|tour|truncate|loadingButtons|masonry|toastrNotification|nestableList|agileBoard|timelineTwo|diff|idleTimer|spinners|liveFavicon|googleMaps|codeEditor|modalWindow|forumView|validation|treeView|chatView|sweetAlert' className='in'}}")
+          li(class="{{isActiveRoute regex='toastrNotification'}}")
+            a(href="{{pathFor 'toastrNotification'}}") Notification
+          li(class="{{isActiveRoute regex='nestableList'}}")
+            a(href="{{pathFor 'nestableList'}}") Nestable list
+          li(class="{{isActiveRoute regex='agileBoard'}}")
+            a(href="{{pathFor 'agileBoard'}}") Agile board
+          li(class="{{isActiveRoute regex='timelineTwo'}}")
+            a(href="{{pathFor 'timelineTwo'}}") Timeline v.2
+          li(class="{{isActiveRoute regex='diff'}}")
+            a(href="{{pathFor 'diff'}}") Diff
+          li(class="{{isActiveRoute regex='i18support'}}")
+            a(href="{{pathFor 'i18support'}}") i18 support
+          li(class="{{isActiveRoute regex='sweetAlert'}}")
+            a(href="{{pathFor 'sweetAlert'}}") Sweet alert
+          li(class="{{isActiveRoute regex='idleTimer'}}")
+            a(href="{{pathFor 'idleTimer'}}") Idle timer
+          li(class="{{isActiveRoute regex='truncate'}}")
+            a(href="{{pathFor 'truncate'}}") Truncate
+          li(class="{{isActiveRoute regex='spinners'}}")
+            a(href="{{pathFor 'spinners'}}") Spinners
+          li(class="{{isActiveRoute regex='liveFavicon'}}")
+            a(href="{{pathFor 'liveFavicon'}}") Live favicon
+          li(class="{{isActiveRoute regex='googleMaps'}}")
+            a(href="{{pathFor 'googleMaps'}}") Google maps
+          li(class="{{isActiveRoute regex='codeEditor'}}")
+            a(href="{{pathFor 'codeEditor'}}") Code editor
+          li(class="{{isActiveRoute regex='modalWindow'}}")
+            a(href="{{pathFor 'modalWindow'}}") Modal window
+          li(class="{{isActiveRoute regex='clipboard'}}")
+            a(href="{{pathFor 'clipboard'}}") Clipboard
+          li(class="{{isActiveRoute regex='forumView'}}")
+            a(href="{{pathFor 'forumView'}}") Forum view
+          li(class="{{isActiveRoute regex='validation'}}")
+            a(href="{{pathFor 'validation'}}") Validation
+          li(class="{{isActiveRoute regex='treeView'}}")
+            a(href="{{pathFor 'treeView'}}") Tree view
+          li(class="{{isActiveRoute regex='loadingButtons'}}")
+            a(href="{{pathFor 'loadingButtons'}}") Loading buttons
+          li(class="{{isActiveRoute regex='chatView'}}")
+            a(href="{{pathFor 'chatView'}}") Chat view
+          li(class="{{isActiveRoute regex='masonry'}}")
+            a(href="{{pathFor 'masonry'}}") Masonry
+          li(class="{{isActiveRoute regex='tour'}}")
+            a(href="{{pathFor 'tour'}}") Tour
+      li(class="{{isActiveRoute regex='resizeablePanels|typography|icons|draggablePanels|buttons|video|tabsPanels|notifications|badgesLabels|tabs'}}")
+        a(href='#')
+          i.fa.fa-flask
+          span.nav-label(data-i18n='nav.uielements') UI Elements
+          span.fa.arrow
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='resizeablePanels|typography|icons|draggablePanels|buttons|video|tabsPanels|notifications|badgesLabels|tabs' className='in'}}")
+          li(class="{{isActiveRoute regex='typography'}}")
+            a(href="{{pathFor 'typography'}}") Typography
+          li(class="{{isActiveRoute regex='icons'}}")
+            a(href="{{pathFor 'icons'}}") Icons
+          li(class="{{isActiveRoute regex='draggablePanels'}}")
+            a(href="{{pathFor 'draggablePanels'}}") Draggable Panels
+          li(class="{{isActiveRoute regex='resizeablePanels'}}")
+            a(href="{{pathFor 'resizeablePanels'}}") Resizeable Panels
+          li(class="{{isActiveRoute regex='buttons'}}")
+            a(href="{{pathFor 'buttons'}}") Buttons
+          li(class="{{isActiveRoute regex='video'}}")
+            a(href="{{pathFor 'video'}}") Video
+          li(class="{{isActiveRoute regex='tabsPanels'}}")
+            a(href="{{pathFor 'tabsPanels'}}") Panels
+          li(class="{{isActiveRoute regex='tabs'}}")
+            a(href="{{pathFor 'tabs'}}") Tabs
+          li(class="{{isActiveRoute regex='notifications'}}")
+            a(href="{{pathFor 'notifications'}}") Notifications &amp; Tooltips
+          li(class="{{isActiveRoute regex='badgesLabels'}}")
+            a(href="{{pathFor 'badgesLabels'}}") Badges, Labels, Progress
+      li(class="{{isActiveRoute regex='gridOptions'}}")
+        a(href="{{pathFor 'gridOptions'}}")
+          i.fa.fa-laptop
+          span.nav-label(data-i18n='nav.gridoptions') Grid options
+      li(class="{{isActiveRoute regex='tableStatic|dataTables|fooTables'}}")
+        a(href='#')
+          i.fa.fa-table
+          span.nav-label(data-i18n='nav.tables') Tables
+          span.fa.arrow
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='tableStatic|dataTables|fooTables' className='in'}}")
+          li(class="{{isActiveRoute regex='tableStatic'}}")
+            a(href="{{pathFor 'tableStatic'}}") Static Tables
+          li(class="{{isActiveRoute regex='fooTables'}}")
+            a(href="{{pathFor 'fooTables'}}") Foo tables
+          li(class="{{isActiveRoute regex='dataTables'}}")
+            a(href="{{pathFor 'dataTables'}}") Data Tables
+      li(class="{{isActiveRoute regex='shopingCart|productDetail|payments|productsGrid|productsList|productEdit|orders'}}")
+        a(href='#')
+          i.fa.fa-shopping-cart
+          span.nav-label(data-i18n='nav.ecommerce') E-commerce
+          span.fa.arrow
+        ul.nav.nav-second-level(class="{{isActiveRoute regex='shopingCart|productDetail|payments|productsGrid|productsList|productEdit|orders' className='in'}}")
+          li(class="{{isActiveRoute regex='productsGrid'}}")
+            a(href="{{pathFor 'productsGrid'}}") Products grid
+          li(class="{{isActiveRoute regex='productsList'}}")
+            a(href="{{pathFor 'productsList'}}") Product list
+          li(class="{{isActiveRoute regex='productEdit'}}")
+            a(href="{{pathFor 'productEdit'}}") Product edit
+          li(class="{{isActiveRoute regex='productDetail'}}")
+            a(href="{{pathFor 'productDetail'}}") Product Detail
+          li(class="{{isActiveRoute regex='shopingCart'}}")
+            a(href="{{pathFor 'shopingCart'}}") Cart
+          li(class="{{isActiveRoute regex='orders'}}")
+            a(href="{{pathFor 'orders'}}") Orders
+          li(class="{{isActiveRoute regex='payments'}}")
+            a(href="{{pathFor 'payments'}}") Credit Card form
+      li(class="{{isActiveRoute regex='slick|gallery|carusela'}}")
+        a(href='#')
+          i.fa.fa-picture-o
+          span.nav-label(data-i18n='nav.gallery') Gallery
+          span.fa.arrow
+        ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='slick|gallery|carusela' className='in'}}")
+          li(class="{{isActiveRoute regex='gallery'}}")
+            a(href="{{pathFor 'gallery'}}") Lightbox Gallery
+          li(class="{{isActiveRoute regex='carusela'}}")
+            a(href="{{pathFor 'carusela'}}") Bootstrap Carousel
+          li(class="{{isActiveRoute regex='slick'}}")
+            a(href="{{pathFor 'slick'}}") Slick Carousel
+      li
+        a(href='#')
+          i.fa.fa-sitemap
+          span.nav-label(data-i18n='nav.menulevels') Menu Levels
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a(href='#')
+              | Third Level
+              span.fa.arrow
+            ul.nav.nav-third-level
+              li
+                a(href='#') Third Level Item
+              li
+                a(href='#') Third Level Item
+              li
+                a(href='#') Third Level Item
+          li
+            a(href='#') Second Level Item
+          li
+            a(href='#') Second Level Item
+          li
+            a(href='#') Second Level Item
+      li(class="{{isActiveRoute regex='cssAnimations'}}")
+        a(href="{{pathFor 'cssAnimations'}}")
+          i.fa.fa-magic
+          span.nav-label(data-i18n='nav.animations') CSS Animations
+          span.label.label-info.pull-right 62
+      li.special_link
+        a(href="{{pathFor 'landing'}}")
+          i.fa.fa-database
+          span.nav-label(data-i18n='nav.landing') Landing page

@@ -1,4 +1,4 @@
-Template.tasksNavigation.onRendered(function() {
+Template.navigation.onRendered(function() {
     this.find('#content-container')._uihooks = {
         insertElement: function(node, next) {
             $(node)
@@ -18,7 +18,7 @@ Template.tasksNavigation.onRendered(function() {
     };
 });
 
-Template.tasksNavigation.helpers({
+Template.navigation.helpers({
     // We use #each on an array of one item so that the "list" template is
     // removed and a new copy is added when changing lists, which is
     // important for animation purposes. #each looks at the _id property of it's
@@ -61,7 +61,7 @@ Template.tasksNavigation.helpers({
     }
 });
 
-Template.tasksNavigation.events({
+Template.navigation.events({
     'click .js-menu': function() {
         Session.set(MENU_KEY, ! Session.get(MENU_KEY));
     },
@@ -104,7 +104,7 @@ Template.tasksNavigation.events({
     }
 });
 
-Template.tasksNavigation.rendered = function(){
+Template.navigation.rendered = function(){
 
     // Initialize metisMenu
     $('#side-menu').metisMenu();
