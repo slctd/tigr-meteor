@@ -1,8 +1,9 @@
 {
   "app":{
-    "name": "INSPINIA 2.4"
+    "name": "EveMt"
   },
   "nav":{
+    "taskLists": "Task Lists",
     "dashboard": "Dashboards",
     "graphs": "Graphs",
     "mailbox": "Mailbox",

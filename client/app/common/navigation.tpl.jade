@@ -17,7 +17,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
                     span.icon-arrow-up
                   else
                     span.icon-arrow-down
-            ul.dropdown-menu.animated.fadeInRight.m-t-xs
+            ul.dropdown-menu.animated.fadeInDown.m-t-xs
               li
                 a.js-logout(href="{{pathFor 'login'}}") Logout
         .logo-element
@@ -25,7 +25,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li.list-todos
         a(href='#')
           i.fa.fa-check-square
-          span.nav-label(data-i18n='nav.dashboard')
+          span.nav-label(data-i18n='nav.taskLists')
             | Task Lists
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='lists' className='in'}}")

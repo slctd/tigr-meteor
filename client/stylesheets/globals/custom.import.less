@@ -4,3 +4,21 @@
     display: none;
   }
 }
+
+//Top bar languages
+.nav.navbar-top-links .dropdown-menu > .active {
+  & > a {
+    color: inherit;
+    background-color: inherit;
+    font-weight: bold;
+  }
+  & > a:after {
+    padding-left: 1em;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    content: "\f00c"
+  }
+}

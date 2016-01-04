@@ -1,0 +1,44 @@
+{
+  "app":{
+    "name": "EveMt"
+  },
+  "nav":{
+    "taskLists": "Списки задач",
+    "dashboard": "Сводка",
+    "graphs": "Графики",
+    "mailbox": "Почта",
+    "widgets": "Виджеты",
+    "metrics": "Метрики",
+    "forms": "Формы",
+    "appviews": "Экраны приложений",
+    "otherpages": "Другие страницы",
+    "uielements": "Элементы оформления",
+    "miscellaneous": "Разное",
+    "gridoptions": "Варианты сеток",
+    "tables": "Таблицы",
+    "ecommerce": "И-магазины",
+    "gallery": "Галерея",
+    "menulevels": "Уровни меню",
+    "animations": "Анимация",
+    "landing": "Лэндинги",
+    "layouts": "Верстка",
+    "package": "Пакеты"
+  },
+  "body":{
+    "welcome": "Добро пожаловать"
+
+  },
+  "topnav":{
+
+    "messageinfo": "У вас 42 сообщения и 6 уведомлений.",
+    "search": "Найти то что нужно...",
+    "logout": "Выход",
+    "welcometext": "Добро пожаловать в EveMt.",
+    "language": "Язык"
+  },
+  "demo":{
+    "text1": "Пример текста про локализацию."
+  }
+
+
+}
