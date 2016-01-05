@@ -21,17 +21,22 @@ if todosReady
                 span.badge.badge-primary.count-list {{incompleteCount}}
             +taskListMenu
           .ibox-content
-            form.js-todo-new.todo-new.input-symbol
-              input(type='text', placeholder='Type to add new tasks')
-              span.icon-add.js-todo-add
-              with _id
-                ul.todo-list.m-t.small-list
-                  each todos this
-                    +task
-                  else
-                    .wrapper-message
-                      .title-message No tasks here
-                      .subtitle-message Add new tasks using the field above
+            form.js-todo-new
+              .col-md-12
+              .input-group
+                input.input-sm.form-control(type='text', placeholder='Type to add new tasks')
+                span.input-group-btn
+                  button.btn.btn-sm.btn-primary(type='submit')
+                    i.fa.fa-plus.js-todo-add
+                    | Add task
+            with _id
+              ul.todo-list.m-t.small-list
+                each todos this
+                  +task
+                else
+                  .wrapper-message
+                    .title-message No tasks here
+                    .subtitle-message Add new tasks using the field above
 else
   .spinner.m-b.m-t
     .sk-spinner.sk-spinner-wandering-cubes
