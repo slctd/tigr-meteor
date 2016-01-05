@@ -12,6 +12,11 @@ if todosReady
                     span.fa.fa-times.js-cancel(title='Cancel')
             else
               h5
+                span.privacy
+                  if userId
+                    i.fa.fa-lock
+                  else
+                    i.fa.fa-globe
                 span.title-wrapper {{name}}
                 span.badge.badge-primary.count-list {{incompleteCount}}
             +taskListMenu
