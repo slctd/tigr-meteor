@@ -51,3 +51,43 @@ Template.projects.helpers({
         }
     }
 });
+
+Template.projects.events({
+    'submit #new-project': function(event) {
+        event.preventDefault();
+
+        var $input = $(event.target).find('[type=text]');
+        if (! $input.val())
+            return;
+
+        TaskLists.insert({
+            name: $input.val(),
+            createdAt: new Date()
+        });
+        $input.val('');
+    },
+
+    'click .js-new-project': function() {
+        $('#new-project').removeClass('hidden');
+        $('.js-new-project').addClass('hidden')
+    },
+
+    'click .js-close-new': function() {
+        $('#new-project').addClass('hidden');
+        $('.js-new-project').removeClass('hidden')
+    },
+
+    'click .js-collapse-link': function (event) {
+        var element = $(event.target);
+        var ibox = element.closest('div.ibox');
+        var button = element.closest("i");
+        var content = ibox.find('div.ibox-content');
+        content.slideToggle(200);
+        button.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
+        ibox.toggleClass('').toggleClass('border-bottom');
+        setTimeout(function () {
+            ibox.resize();
+            ibox.find('[id^=map-]').resize();
+        }, 50);
+    }
+});

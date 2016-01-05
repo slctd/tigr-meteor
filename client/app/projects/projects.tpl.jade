@@ -1,21 +1,45 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-7.pull-left
+    h2 Projects List
+    ol.breadcrumb
+      li
+        a(href="pathFor home") Home
+      li.active
+        strong Projects
+  .col-lg-5.text-right.m-t
+    button.btn.btn-primary.js-new-project
+      i.fa.fa-plus
+      | Create Project
+
 if projectsReady
-  .wrapper.wrapper-content.animated.fadeInUp
+  .wrapper.wrapper-content.animated.fadeInDown
+    #new-project.ibox.hidden
+      .ibox-title
+        h5 Add new Project
+        .ibox-tools
+          a.js-collapse-link
+            i.fa.fa-chevron-up
+          a.js-close-new(title='Close')
+            i.fa.fa-times
+      .ibox-content
+        .row
+          .col-lg-8
+            form.form-inline
+              .form-group
+                input.form-control(type='text', placeholder='Project name')
+              button.js-project-add.btn.btn-white.no-margins(type='submit')
+                i.fa.fa-plus
+                | Add Project
     .ibox
       .ibox-title
         h5 All projects assigned to this account
-        .ibox-tools
-          a.btn.btn-primary.btn-xs(href='') Create new project
       .ibox-content
         .row.m-b-sm.m-t-sm
-          .col-md-1
-            button#loading-example-btn.btn.btn-white.btn-sm(type='button')
-              i.fa.fa-refresh
-              |  Refresh
-          .col-md-11
+          .col-lg-8
             .input-group
-              input.input-sm.form-control(type='text', placeholder='Search')
+              input.input-sm.form-control(type='text', placeholder='Search in Projects')
               span.input-group-btn
-                button.btn.btn-sm.btn-primary(type='button')  Go!
+                button.btn.btn-sm.btn-primary(type='button') Find
         .project-list
           table.table.table-hover
             tbody
