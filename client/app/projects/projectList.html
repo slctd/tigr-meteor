@@ -1,0 +1,19 @@
+<template name="projectList">
+    <div class="row m-b">
+        <div class="col-xs-12">
+            <div class="input-group">
+                {{> EasySearch.Input index=projectsIndex attributes=inputAttributes }}
+                <div class="input-group-btn">
+                    <button class="btn btn-sm btn-primary" type="submit">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row project-list">
+        {{#EasySearch.Each index=projectsIndex }}
+            {{>projectListItem}}
+        {{/EasySearch.Each}}
+    </div>
+</template>

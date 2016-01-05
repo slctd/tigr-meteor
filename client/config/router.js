@@ -52,7 +52,6 @@ Router.route('taskLists', {
 
 Router.route('projects', {
     path: '/projects/:_id',
-    layoutTemplate: 'tasksLayout',
     onBeforeAction: function () {
         this.todosHandle = Meteor.subscribe('todos', this.params._id);
 

@@ -30,21 +30,7 @@ if projectsReady
               button.js-project-add.btn.btn-white.no-margins(type='submit')
                 i.fa.fa-plus
                 | Add Project
-    .ibox
-      .ibox-title
-        h5 All projects assigned to this account
-      .ibox-content
-        .row.m-b-sm.m-t-sm
-          .col-lg-8
-            .input-group
-              input.input-sm.form-control(type='text', placeholder='Search in Projects')
-              span.input-group-btn
-                button.btn.btn-sm.btn-primary(type='button') Find
-        .project-list
-          table.table.table-hover
-            tbody
-              each projects
-                +project
+    +projectList
 else
   .spinner.m-b.m-t
     .sk-spinner.sk-spinner-wandering-cubes

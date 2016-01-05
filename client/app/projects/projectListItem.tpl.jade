@@ -1,0 +1,31 @@
+.col-lg-4
+  .ibox
+    .ibox-title
+      if status
+        span.label.label-primary.count-list.pull-right {{status}}
+      h5 {{name}}
+    .ibox-content
+      //.team-members
+      //  a(href='#')
+      //    img.img-circle(alt='member', src='img/a1.jpg')
+      //h4 Info about Design Team
+      //p
+      //  | It is a long established fact that a reader will be distracted by the readable content
+      //  | of a page when looking at its layout. The point of using Lorem Ipsum is that it has.
+      //div
+      //  span Status of current project:
+      //  .stat-percent 48%
+      //  .progress.progress-mini
+      //    .progress-bar(style='width: 48%;')
+      .row.m-t-sm
+        if incompleteCount
+          .col-sm-4
+            .font-bold TASKS
+            | {{incompleteCount}}
+      //  .col-sm-4
+      //    .font-bold RANKING
+      //    |                         4th
+      //  .col-sm-4.text-right
+      //    .font-bold BUDGET
+      //    |                         $200,913
+      //    i.fa.fa-level-up.text-navy

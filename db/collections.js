@@ -1,4 +1,9 @@
-TaskLists = new Mongo.Collection('taskLists');
+TaskLists = new Mongo.Collection('taskLists'),
+  TaskListsIndex = new EasySearch.Index({
+    collection: TaskLists,
+    fields: ['name'],
+    engine: new EasySearch.Minimongo()
+  });
 
 // Calculate a default name for a list in the form of 'List A'
 TaskLists.defaultName = function() {

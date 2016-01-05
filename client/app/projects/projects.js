@@ -51,6 +51,14 @@ Template.projects.helpers({
         }
     }
 });
+Template.projectList.helpers({
+    projectsIndex: function() {
+        return TaskListsIndex;
+    },
+    inputAttributes: function () {
+        return { 'class': 'input-sm form-control', 'placeholder': 'Search in Projects' };
+    }
+});
 
 Template.projects.events({
     'submit #new-project': function(event) {
