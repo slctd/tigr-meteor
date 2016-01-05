@@ -1,9 +1,22 @@
 .col-lg-4
-  .ibox
+  .ibox(id='{{id}}')
     .ibox-title
       if status
         span.label.label-primary.count-list.pull-right {{status}}
-      h5 {{name}}
+      if editing
+        form.form-inline.js-edit-form
+          .input-group
+            input.input-sm.form-control(type='text', name='name', value='{{name}}')
+            .input-group-btn
+              button.btn.btn-sm.btn-primary.js-cancel(title='Cancel')
+                i.fa.fa-times
+      else
+        h5 {{name}}
+        .ibox-tools
+          a.js-edit-project(href="#" title="Edit")
+            i.fa.fa-pencil
+          a.js-delete-project
+            i.fa.fa-trash
     .ibox-content
       //.team-members
       //  a(href='#')
