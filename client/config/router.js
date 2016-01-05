@@ -50,6 +50,25 @@ Router.route('taskLists', {
     }
 });
 
+Router.route('projects', {
+    path: '/projects/:_id',
+    layoutTemplate: 'tasksLayout',
+    onBeforeAction: function () {
+        this.todosHandle = Meteor.subscribe('todos', this.params._id);
+
+        if (this.ready()) {
+            // Handle for launch screen defined in app-body.js
+            dataReadyHold.release();
+        }
+    },
+    data: function () {
+        return TaskLists.findOne(this.params._id);
+    },
+    action: function () {
+        this.render();
+    }
+});
+
 Router.route('home', {
     path: '/',
     layoutTemplate: 'tasksLayout',
@@ -215,9 +234,9 @@ Router.route('contacts2', function () {
     this.render('contacts2');
 });
 
-Router.route('projects', function () {
-    this.render('projects');
-});
+//Router.route('projects', function () {
+//    this.render('projects');
+//});
 
 Router.route('projectDetail', function () {
     this.render('projectDetail');

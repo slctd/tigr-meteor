@@ -4,6 +4,7 @@
   },
   "nav":{
     "taskLists": "Task Lists",
+    "projects": " Projects",
     "dashboard": "Dashboards",
     "graphs": "Graphs",
     "mailbox": "Mailbox",

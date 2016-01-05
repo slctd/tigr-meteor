@@ -33,13 +33,17 @@ nav.navbar-default.navbar-static-side(role='navigation')
             li(class="{{isActiveRoute regex=activeListClass}}")
               a(href="{{pathFor 'taskLists'}}" class="{{isActiveRoute regex=activeListClass}}") {{name}}
                 if userId
-                  span.icon-lock
+                  i.fa.fa-lock
                 if incompleteCount
                   span.label.label-primary.pull-right {{incompleteCount}}
           li
             a.js-new-list.link-list-new
               span.fa.fa-plus
               |  New List
+      li(class="{{isActiveRoute regex='projects'}}")
+        a(href="{{pathFor 'projects'}}")
+          i.fa.fa-breafcase
+          span.nav-label(data-i18n='nav.projects') Projects
       li(class="{{isActiveRoute regex='dashboard1|dashboard2|dashboard3|dashboard4l|dashboard5'}}")
         a(href='#')
           i.fa.fa-th-large
@@ -122,7 +126,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
             a(href="{{pathFor 'textEditor'}}") Text Editor
           li(class="{{isActiveRoute regex='markdown'}}")
             a(href="{{pathFor 'markdown'}}") Markdown
-      li(class="{{isActiveRoute regex='contacts2|profile2|voteList|contacts|profile|projects|projectDetail|teamsBoard|clients|fullHeight|fileManager|calendar|issueTracker|blog|article|faq|timelineOne|pinBoard|socialFeed'}}")
+      li(class="{{isActiveRoute regex='contacts2|profile2|voteList|contacts|profile|projectDetail|teamsBoard|clients|fullHeight|fileManager|calendar|issueTracker|blog|article|faq|timelineOne|pinBoard|socialFeed'}}")
         a(href='#')
           i.fa.fa-desktop
           span.nav-label(data-i18n='nav.appviews') App Views
@@ -136,8 +140,8 @@ nav.navbar-default.navbar-static-side(role='navigation')
             a(href="{{pathFor 'profile2'}}") Profile 2
           li(class="{{isActiveRoute regex='contacts2'}}")
             a(href="{{pathFor 'contacts2'}}") Contact 2
-          li(class="{{isActiveRoute regex='projects'}}")
-            a(href="{{pathFor 'projects'}}") Projects
+          //li(class="{{isActiveRoute regex='projects'}}")
+          //  a(href="{{pathFor 'projects'}}") Projects
           li(class="{{isActiveRoute regex='projectDetail'}}")
             a(href="{{pathFor 'projectDetail'}}") Project detail
           li(class="{{isActiveRoute regex='teamsBoard'}}")
@@ -178,14 +182,14 @@ nav.navbar-default.navbar-static-side(role='navigation')
             a(href="{{pathFor 'lockScreen'}}") Lockscreen
           li(class="{{isActiveRoute regex='invoice'}}")
             a(href="{{pathFor 'invoice'}}") Invoice
-          li
-            a(href="{{pathFor 'login'}}") Login
-          li
-            a(href="{{pathFor 'loginTwo'}}") Login v.2
-          li
-            a(href="{{pathFor 'forgotPassword'}}") Forgot password
-          li
-            a(href="{{pathFor 'register'}}") Register
+          //li
+          //  a(href="{{pathFor 'login'}}") Login
+          //li
+          //  a(href="{{pathFor 'loginTwo'}}") Login v.2
+          //li
+          //  a(href="{{pathFor 'forgotPassword'}}") Forgot password
+          //li
+          //  a(href="{{pathFor 'register'}}") Register
           li
             a(href="{{pathFor 'errorOne'}}") 404 Page
           li
@@ -208,16 +212,16 @@ nav.navbar-default.navbar-static-side(role='navigation')
             a(href="{{pathFor 'timelineTwo'}}") Timeline v.2
           li(class="{{isActiveRoute regex='diff'}}")
             a(href="{{pathFor 'diff'}}") Diff
-          li(class="{{isActiveRoute regex='i18support'}}")
-            a(href="{{pathFor 'i18support'}}") i18 support
+          //li(class="{{isActiveRoute regex='i18support'}}")
+          //  a(href="{{pathFor 'i18support'}}") i18 support
           li(class="{{isActiveRoute regex='sweetAlert'}}")
             a(href="{{pathFor 'sweetAlert'}}") Sweet alert
           li(class="{{isActiveRoute regex='idleTimer'}}")
             a(href="{{pathFor 'idleTimer'}}") Idle timer
           li(class="{{isActiveRoute regex='truncate'}}")
             a(href="{{pathFor 'truncate'}}") Truncate
-          li(class="{{isActiveRoute regex='spinners'}}")
-            a(href="{{pathFor 'spinners'}}") Spinners
+          //li(class="{{isActiveRoute regex='spinners'}}")
+          //  a(href="{{pathFor 'spinners'}}") Spinners
           li(class="{{isActiveRoute regex='liveFavicon'}}")
             a(href="{{pathFor 'liveFavicon'}}") Live favicon
           li(class="{{isActiveRoute regex='googleMaps'}}")
@@ -316,35 +320,35 @@ nav.navbar-default.navbar-static-side(role='navigation')
             a(href="{{pathFor 'carusela'}}") Bootstrap Carousel
           li(class="{{isActiveRoute regex='slick'}}")
             a(href="{{pathFor 'slick'}}") Slick Carousel
-      li
-        a(href='#')
-          i.fa.fa-sitemap
-          span.nav-label(data-i18n='nav.menulevels') Menu Levels
-          span.fa.arrow
-        ul.nav.nav-second-level
-          li
-            a(href='#')
-              | Third Level
-              span.fa.arrow
-            ul.nav.nav-third-level
-              li
-                a(href='#') Third Level Item
-              li
-                a(href='#') Third Level Item
-              li
-                a(href='#') Third Level Item
-          li
-            a(href='#') Second Level Item
-          li
-            a(href='#') Second Level Item
-          li
-            a(href='#') Second Level Item
+      //li
+      //  a(href='#')
+      //    i.fa.fa-sitemap
+      //    span.nav-label(data-i18n='nav.menulevels') Menu Levels
+      //    span.fa.arrow
+      //  ul.nav.nav-second-level
+      //    li
+      //      a(href='#')
+      //        | Third Level
+      //        span.fa.arrow
+      //      ul.nav.nav-third-level
+      //        li
+      //          a(href='#') Third Level Item
+      //        li
+      //          a(href='#') Third Level Item
+      //        li
+      //          a(href='#') Third Level Item
+      //    li
+      //      a(href='#') Second Level Item
+      //    li
+      //      a(href='#') Second Level Item
+      //    li
+      //      a(href='#') Second Level Item
       li(class="{{isActiveRoute regex='cssAnimations'}}")
         a(href="{{pathFor 'cssAnimations'}}")
           i.fa.fa-magic
           span.nav-label(data-i18n='nav.animations') CSS Animations
           span.label.label-info.pull-right 62
-      li.special_link
-        a(href="{{pathFor 'landing'}}")
-          i.fa.fa-database
-          span.nav-label(data-i18n='nav.landing') Landing page
+      //li.special_link
+      //  a(href="{{pathFor 'landing'}}")
+      //    i.fa.fa-database
+      //    span.nav-label(data-i18n='nav.landing') Landing page

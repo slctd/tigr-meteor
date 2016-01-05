@@ -4,6 +4,7 @@
   },
   "nav":{
     "taskLists": "Списки задач",
+    "projects": "Проекты",
     "dashboard": "Сводка",
     "graphs": "Графики",
     "mailbox": "Почта",

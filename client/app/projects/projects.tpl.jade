@@ -1,0 +1,28 @@
+if projectsReady
+  .wrapper.wrapper-content.animated.fadeInUp
+    .ibox
+      .ibox-title
+        h5 All projects assigned to this account
+        .ibox-tools
+          a.btn.btn-primary.btn-xs(href='') Create new project
+      .ibox-content
+        .row.m-b-sm.m-t-sm
+          .col-md-1
+            button#loading-example-btn.btn.btn-white.btn-sm(type='button')
+              i.fa.fa-refresh
+              |  Refresh
+          .col-md-11
+            .input-group
+              input.input-sm.form-control(type='text', placeholder='Search')
+              span.input-group-btn
+                button.btn.btn-sm.btn-primary(type='button')  Go!
+        .project-list
+          table.table.table-hover
+            tbody
+              each projects
+                +project
+else
+  .spinner.m-b.m-t
+    .sk-spinner.sk-spinner-wandering-cubes
+      .sk-cube1
+      .sk-cube2
