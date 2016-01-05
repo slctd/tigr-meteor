@@ -14,7 +14,7 @@
           span.m-r-sm.text-muted.welcome-message  Welcome to EveMt cloud service.
       li
         if currentUser
-          a.js-logout(href="{{pathFor route='login'}}")
+          a.js-logout(href="{{pathFor 'signin'}}")
             i.fa.fa-sign-out
             |  Log out
         else
