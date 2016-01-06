@@ -1,44 +1,77 @@
 .col-lg-4
-  .ibox(id='{{id}}')
-    .ibox-title
-      if status
-        span.label.label-primary.count-list.pull-right {{status}}
-      if editing
-        form.form-inline.js-edit-form
-          .input-group
-            input.input-sm.form-control(type='text', name='name', value='{{name}}')
-            .input-group-btn
-              button.btn.btn-sm.btn-primary.js-cancel(title='Cancel')
-                i.fa.fa-times
-      else
+  .ibox(id='project_{{id}}')
+    if editing
+      .ibox-content
+        form.form-horizontal.js-edit-form
+          .form-group
+            label.col-sm-2.control-label
+              | Project Name
+            .col-sm-10
+              .input-group
+                input.form-control(type='text', name='name', value='{{name}}', placeholder='Project Name')
+                .input-group-btn
+                  button.btn.btn-white.dropdown-toggle(data-toggle="dropdown" type="button")
+                    if status
+                      | {{status}}
+                    else
+                      | Status
+                    span.caret
+                  ul.dropdown-menu.pull-right
+                    li
+                      a(href="#") Active
+                    li
+                      a(href="#") Suspended
+                    li.devider
+                    li
+                      a(href="#") Closed
+          hr.hr-line-dashed
+          .form-group
+            label.col-sm-2.control-label
+              | Project Header
+            .col-sm-10
+              input.form-control(type='text', name='header', value='{{header}}', placeholder='Project Header')
+          hr.hr-line-dashed
+          .form-group
+            label.col-sm-2.control-label
+              | Project Description
+            .col-sm-10
+              textarea.form-control(type='text', name='description', placeholder='Project Description') {{description}}
+          hr.hr-line-dashed
+          .form-group
+            .col-sm-4.col-sm-offset-2
+              button.btn.btn-default.js-cancel Cancel
+            .col-sm-4
+              button.btn.btn-primary.js-save Save Changes
+    else
+      .ibox-title
+        if status
+          span.label.label-primary.count-list.pull-right {{status}}
         h5 {{name}}
         .ibox-tools
           a.js-edit-project(href="#" title="Edit")
             i.fa.fa-pencil
           a.js-delete-project
             i.fa.fa-trash
-    .ibox-content
-      //.team-members
-      //  a(href='#')
-      //    img.img-circle(alt='member', src='img/a1.jpg')
-      //h4 Info about Design Team
-      //p
-      //  | It is a long established fact that a reader will be distracted by the readable content
-      //  | of a page when looking at its layout. The point of using Lorem Ipsum is that it has.
-      //div
-      //  span Status of current project:
-      //  .stat-percent 48%
-      //  .progress.progress-mini
-      //    .progress-bar(style='width: 48%;')
-      .row.m-t-sm
-        if incompleteCount
-          .col-sm-4
-            .font-bold TASKS
-            | {{incompleteCount}}
-      //  .col-sm-4
-      //    .font-bold RANKING
-      //    |                         4th
-      //  .col-sm-4.text-right
-      //    .font-bold BUDGET
-      //    |                         $200,913
-      //    i.fa.fa-level-up.text-navy
+      .ibox-content
+        //.team-members
+        //  a(href='#')
+        //    img.img-circle(alt='member', src='img/a1.jpg')
+        h4 {{header}}
+        p {{description}}
+        //div
+        //  span Status of current project:
+        //  .stat-percent 48%
+        //  .progress.progress-mini
+        //    .progress-bar(style='width: 48%;')
+        .row.m-t-sm
+          if incompleteCount
+            .col-sm-4
+              .font-bold TASKS
+              | {{incompleteCount}}
+        //  .col-sm-4
+        //    .font-bold RANKING
+        //    |                         4th
+        //  .col-sm-4.text-right
+        //    .font-bold BUDGET
+        //    |                         $200,913
+        //    i.fa.fa-level-up.text-navy

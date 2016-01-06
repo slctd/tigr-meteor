@@ -12,17 +12,43 @@ Template.projectListItem.helpers({
     }
 });
 
-var editProject = function(project, template) {
-    Session.set(EDITING_KEY, project._id);
+var animateSwitch = function(project, template) {
+    var panel = template.$('#project_' + project._id);
+    panel.addClass("animated").addClass("flipInY");
+    setTimeout(function() {
+        panel.removeClass("animated").removeClass("flipInY");
+    }, 1500);
+};
 
+var editProject = function(project, template) {
     // force the template to redraw based on the reactive change
     Tracker.flush();
-    template.$('.js-edit-form input[type=text]').focus();
+
+    Session.set(EDITING_KEY, project._id);
+    animateSwitch(project, template);
+    template.$('.js-edit-form input[name="name"]').first().focus();
+};
+
+var updateProject = function(project, template, fieldName) {
+    //Session.set(EDITING_KEY, false);
+    var update = {};
+    update[fieldName] = template.$('[name="'+fieldName+'"]').val();
+    TaskLists.update(project._id, {$set: update});
 };
 
 var saveProject = function(project, template) {
+    TaskLists.update(project._id, {$set: {
+        name: template.$('[name="name"]').val(),
+        header: template.$('[name="header"]').val(),
+        description: template.$('[name="description"]').val()
+    }});
+    animateSwitch(project, template);
     Session.set(EDITING_KEY, false);
-    TaskLists.update(project._id, {$set: {name: template.$('[name=name]').val()}});
+};
+
+var cancel = function(project, template) {
+    animateSwitch(project, template);
+    Session.set(EDITING_KEY, false);
 };
 
 var deleteProject = function(project) {
@@ -47,11 +73,11 @@ var deleteProject = function(project) {
 };
 
 Template.projectListItem.events({
-    'click .js-cancel': function() {
-        Session.set(EDITING_KEY, false);
+    'click .js-cancel': function(event, template) {
+        cancel(this, template);
     },
 
-    'keydown input[type=text]': function(event) {
+    'keydown input[name=name]': function(event) {
         // ESC or ENTER
         if (27 === event.which || event.which === 13) {
             event.preventDefault();
@@ -59,22 +85,31 @@ Template.projectListItem.events({
         }
     },
 
-    'blur input[type=text]': function(event, template) {
-        // if we are still editing (we haven't just clicked the cancel button)
-        if (Session.get(EDITING_KEY))
-            saveProject(this, template);
-    },
+    //'blur input[name="name"]': function(event, template) {
+    //    if (Session.get(EDITING_KEY))
+    //        updateProject(this, template, 'name');
+    //},
+    //
+    //'blur input[name="header"]': function(event, template) {
+    //    if (Session.get(EDITING_KEY))
+    //        updateProject(this, template, 'header');
+    //},
+    //
+    //'blur input[name="description"]': function(event, template) {
+    //    if (Session.get(EDITING_KEY))
+    //        updateProject(this, template, 'description');
+    //},
 
-    'submit .js-edit-form': function(event, template) {
+    'submit .js-edit-form, click .js-save': function(event, template) {
         event.preventDefault();
         saveProject(this, template);
     },
 
     // handle mousedown otherwise the blur handler above will swallow the click
     // on iOS, we still require the click event so handle both
-    'mousedown .js-cancel, click .js-cancel': function(event) {
+    'mousedown .js-cancel': function(event, template) {
         event.preventDefault();
-        Session.set(EDITING_KEY, false);
+        cancel(this, template);
     },
 
     'change .project-edit': function(event, template) {
