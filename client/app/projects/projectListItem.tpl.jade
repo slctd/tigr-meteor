@@ -2,11 +2,10 @@
   .ibox(id='project_{{id}}')
     if editing
       .ibox-content
-        form.form-horizontal.js-edit-form
-          .form-group
-            label.col-sm-2.control-label
-              | Project Name
-            .col-sm-10
+        form.js-edit-form
+          .row
+            .form-group.col-sm-12
+              label.control-label Project Name
               .input-group
                 input.form-control(type='text', name='name', value='{{name}}', placeholder='Project Name')
                 .input-group-btn
@@ -30,24 +29,19 @@
                       a.js-status-closed(href="#")
                         i.fa.fa-circle(class="color-default")
                         | Closed
-          hr.hr-line-dashed
-          .form-group
-            label.col-sm-2.control-label
-              | Project Header
-            .col-sm-10
-              input.form-control(type='text', name='header', value='{{header}}', placeholder='Project Header')
-          hr.hr-line-dashed
-          .form-group
-            label.col-sm-2.control-label
-              | Project Description
-            .col-sm-10
+            .form-group.col-sm-12
+              label.control-label About
+              input.form-control(type='text', name='about', value='{{about}}', placeholder='About Project')
+            .form-group.col-sm-12
+              label.control-label Description
               textarea.form-control(type='text', name='description', placeholder='Project Description') {{description}}
-          hr.hr-line-dashed
-          .form-group
-            .col-sm-4.col-sm-offset-2
-              button.btn.btn-default.js-cancel Cancel
-            .col-sm-4
-              button.btn.btn-primary.js-save Save Changes
+          .row
+            hr.hr-line-dashed
+            .form-group
+              .col-xs-4.col-xs-offset-2
+                button.btn.btn-default.js-cancel Cancel
+              .col-xs-4
+                button.btn.btn-primary.js-save Save Changes
     else
       .ibox-title
         h5 {{name}}
@@ -77,7 +71,7 @@
         //.team-members
         //  a(href='#')
         //    img.img-circle(alt='member', src='img/a1.jpg')
-        h4 {{header}}
+        h4 {{about}}
         p {{description}}
         //div
         //  span Status of current project:

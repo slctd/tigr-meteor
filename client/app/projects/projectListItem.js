@@ -65,7 +65,7 @@ var statusToggle = function(project, template, status) {
 var saveProject = function(project, template) {
     Projects.update(project._id, {$set: {
         name: template.$('[name="name"]').val(),
-        header: template.$('[name="header"]').val(),
+        about: template.$('[name="about"]').val(),
         description: template.$('[name="description"]').val()
     }});
     animateSwitch(project, template);
@@ -116,9 +116,9 @@ Template.projectListItem.events({
     //        updateProject(this, template, 'name');
     //},
     //
-    //'blur input[name="header"]': function(event, template) {
+    //'blur input[name="about"]': function(event, template) {
     //    if (Session.get(EDITING_KEY))
-    //        updateProject(this, template, 'header');
+    //        updateProject(this, template, 'about');
     //},
     //
     //'blur input[name="description"]': function(event, template) {
