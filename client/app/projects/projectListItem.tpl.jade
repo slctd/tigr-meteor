@@ -12,18 +12,24 @@
                 .input-group-btn
                   button.btn.btn-white.dropdown-toggle(data-toggle="dropdown" type="button")
                     if status
-                      | {{status}}
+                      span(class='{{statusClass}}') {{statusLabel}}
                     else
                       | Status
                     span.caret
-                  ul.dropdown-menu.pull-right
+                  ul.dropdown-menu
                     li
-                      a(href="#") Active
+                      a.js-status-active(href="#")
+                        i.fa.fa-circle(class="color-primary")
+                        | Active
                     li
-                      a(href="#") Suspended
+                      a.js-status-suspended(href="#")
+                        i.fa.fa-circle(class="color-warning")
+                        | Suspended
                     li.devider
                     li
-                      a(href="#") Closed
+                      a.js-status-closed(href="#")
+                        i.fa.fa-circle(class="color-default")
+                        | Closed
           hr.hr-line-dashed
           .form-group
             label.col-sm-2.control-label
@@ -44,14 +50,29 @@
               button.btn.btn-primary.js-save Save Changes
     else
       .ibox-title
-        if status
-          span.label.label-primary.count-list.pull-right {{status}}
         h5 {{name}}
         .ibox-tools
-          a.js-edit-project(href="#" title="Edit")
-            i.fa.fa-pencil
           a.js-delete-project
             i.fa.fa-trash
+          a.js-edit-project(href="#" title="Edit")
+            i.fa.fa-pencil
+          if status
+            a.dropdown-toggle.pull-right(data-toggle='dropdown', href='#')
+              span(class='{{statusClass}}') {{statusLabel}}
+            ul.dropdown-menu
+              li
+                a.js-status-active(href="#")
+                  i.fa.fa-circle(class="color-primary")
+                  | Active
+              li
+                a.js-status-suspended(href="#")
+                  i.fa.fa-circle(class="color-warning")
+                  | Suspended
+              li.devider
+              li
+                a.js-status-closed(href="#")
+                  i.fa.fa-circle(class="color-default")
+                  | Closed
       .ibox-content
         //.team-members
         //  a(href='#')

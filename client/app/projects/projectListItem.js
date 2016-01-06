@@ -1,11 +1,32 @@
 var EDITING_KEY = 'EDITING_PROJECT_ID';
 
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
 Template.projectListItem.helpers({
     editing: function() {
         return (Session.get(EDITING_KEY) === this._id.toString()) ? true : false;
     },
     editingClass: function() {
         return Session.equals(EDITING_KEY, this._id) && 'editing';
+    },
+    statusClass: function() {
+        switch (this.status) {
+            case 'new':
+                return 'label label-info';
+            case 'active':
+                return 'label label-primary';
+            case 'suspended':
+                return 'label label-warning';
+            case 'closed':
+                return 'label label-default';
+            default:
+                return 'label label-info';
+        }
+    },
+    statusLabel: function() {
+        return this.status.capitalizeFirstLetter();
     },
     id: function() {
         return this._id;
@@ -33,6 +54,11 @@ var updateProject = function(project, template, fieldName) {
     //Session.set(EDITING_KEY, false);
     var update = {};
     update[fieldName] = template.$('[name="'+fieldName+'"]').val();
+    TaskLists.update(project._id, {$set: update});
+};
+
+var statusToggle = function(project, template, status) {
+    var update = {status: status};
     TaskLists.update(project._id, {$set: update});
 };
 
@@ -124,6 +150,18 @@ Template.projectListItem.events({
 
     'click .js-edit-project': function(event, template) {
         editProject(this, template);
+    },
+
+    'click .js-status-active': function(event, template) {
+        statusToggle(this, template, 'active');
+    },
+
+    'click .js-status-suspended': function(event, template) {
+        statusToggle(this, template, 'suspended');
+    },
+
+    'click .js-status-closed': function(event, template) {
+        statusToggle(this, template, 'closed');
     },
 
     'click .js-delete-project': function(event, template) {
