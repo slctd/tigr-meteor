@@ -38,7 +38,7 @@ Template.projects.helpers({
     // important for animation purposes. #each looks at the _id property of it's
     // items to know when to insert a new item and when to update an old one.
     projects: function () {
-        return TaskLists.find();
+        return Projects.find();
     },
     projectsReady: function() {
         return Router.current().todosHandle.ready();
@@ -53,7 +53,7 @@ Template.projects.helpers({
 });
 Template.projectList.helpers({
     projectsIndex: function() {
-        return TaskListsIndex;
+        return ProjectsIndex;
     },
     inputAttributes: function () {
         return { 'class': 'input-sm form-control', 'placeholder': 'Search in Projects' };
@@ -68,7 +68,7 @@ Template.projects.events({
         if (! $input.val())
             return;
 
-        TaskLists.insert({
+        Projects.insert({
             name: $input.val(),
             createdAt: new Date()
         });

@@ -18,3 +18,10 @@ TaskLists.defaultName = function() {
 };
 
 Tasks = new Mongo.Collection('tasks');
+
+Projects = new Mongo.Collection('projects'),
+    ProjectsIndex = new EasySearch.Index({
+        collection: Projects,
+        fields: ['name'],
+        engine: new EasySearch.Minimongo()
+    });

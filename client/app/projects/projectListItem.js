@@ -54,16 +54,16 @@ var updateProject = function(project, template, fieldName) {
     //Session.set(EDITING_KEY, false);
     var update = {};
     update[fieldName] = template.$('[name="'+fieldName+'"]').val();
-    TaskLists.update(project._id, {$set: update});
+    Projects.update(project._id, {$set: update});
 };
 
 var statusToggle = function(project, template, status) {
     var update = {status: status};
-    TaskLists.update(project._id, {$set: update});
+    Projects.update(project._id, {$set: update});
 };
 
 var saveProject = function(project, template) {
-    TaskLists.update(project._id, {$set: {
+    Projects.update(project._id, {$set: {
         name: template.$('[name="name"]').val(),
         header: template.$('[name="header"]').val(),
         description: template.$('[name="description"]').val()
@@ -79,17 +79,17 @@ var cancel = function(project, template) {
 
 var deleteProject = function(project) {
     // ensure the last public project cannot be deleted.
-    if (! project.userId && TaskLists.find({userId: {$exists: false}}).count() === 1) {
+    if (! project.userId && Projects.find({userId: {$exists: false}}).count() === 1) {
         return alert("Sorry, you cannot delete the final public project!");
     }
 
     var message = "Are you sure you want to delete the project " + project.name + "?";
     if (confirm(message)) {
         // we must remove each item individually from the client
-        Tasks.find({listId: project._id}).forEach(function(task) {
-            Tasks.remove(task._id);
-        });
-        TaskLists.remove(project._id);
+        //Tasks.find({listId: project._id}).forEach(function(task) {
+        //    Tasks.remove(task._id);
+        //});
+        Projects.remove(project._id);
 
         //Router.go('projects');
         return true;

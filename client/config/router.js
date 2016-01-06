@@ -12,8 +12,10 @@ Router.configure({
     // the data it's expecting is present
     waitOn: function() {
         return [
-            Meteor.subscribe('publicLists'),
-            Meteor.subscribe('privateLists')
+            Meteor.subscribe('publicTaskLists'),
+            Meteor.subscribe('privateTaskLists'),
+            Meteor.subscribe('publicProjects'),
+            Meteor.subscribe('privateProjects')
         ];
     }
 });
@@ -35,10 +37,10 @@ Router.route('taskLists', {
     // subscribe to todos before the page is rendered but don't wait on the
     // subscription, we'll just render the items as they arrive
     onBeforeAction: function () {
-        this.todosHandle = Meteor.subscribe('todos', this.params._id);
+        this.todosHandle = Meteor.subscribe('tasks', this.params._id);
 
         if (this.ready()) {
-            // Handle for launch screen defined in app-body.js
+            // Handle for launch screen defined in layout
             dataReadyHold.release();
         }
     },
@@ -53,15 +55,12 @@ Router.route('taskLists', {
 Router.route('projects', {
     path: '/projects/:_id',
     onBeforeAction: function () {
-        this.todosHandle = Meteor.subscribe('todos', this.params._id);
+        this.todosHandle = Meteor.subscribe('publicProjects');
 
         if (this.ready()) {
-            // Handle for launch screen defined in app-body.js
+            // Handle for launch screen defined in layout
             dataReadyHold.release();
         }
-    },
-    data: function () {
-        return TaskLists.findOne(this.params._id);
     },
     action: function () {
         this.render();
