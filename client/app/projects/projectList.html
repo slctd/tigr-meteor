@@ -12,6 +12,7 @@
         </div>
     </div>
     <div class="row project-list">
+        <div id="new-project" class="col-lg-4 hidden">{{>newProject}}</div>
         {{#EasySearch.Each index=projectsIndex }}
             {{>projectListItem}}
         {{/EasySearch.Each}}

@@ -1,0 +1,47 @@
+.ibox
+  .ibox-title
+    h5 Add new Project
+    .ibox-tools
+      a.js-collapse-link
+        i.fa.fa-chevron-up
+      a.js-close-new(title='Close')
+        i.fa.fa-times
+  .ibox-content
+    form.js-edit-form
+      .row
+        .form-group.col-sm-12
+          label.control-label Name
+          .input-group
+            input.form-control(type='text', name='name', value='{{name}}', placeholder='Project Name')
+            .input-group-btn
+              button.btn.btn-white.dropdown-toggle(data-toggle="dropdown" type="button")
+                if status
+                  span(class='{{statusClass}}') {{statusLabel}}
+                else
+                  | Status
+                span.caret
+              ul.dropdown-menu
+                li
+                  a.js-status-active(href="#")
+                    i.fa.fa-circle(class="color-primary")
+                    | Active
+                li
+                  a.js-status-suspended(href="#")
+                    i.fa.fa-circle(class="color-warning")
+                    | Suspended
+                li.devider
+                li
+                  a.js-status-closed(href="#")
+                    i.fa.fa-circle(class="color-default")
+                    | Closed
+        .form-group.col-sm-12
+          label.control-label About
+          input.form-control(type='text', name='about', value='{{about}}', placeholder='About Project')
+        .form-group.col-sm-12
+          label.control-label Description
+          textarea.form-control(type='text', name='description', placeholder='Project Description') {{description}}
+        .form-group.col-sm-12
+          .col-sm-4.col-sm-offset-2
+            button.btn.btn-default.js-close-new Cancel
+          .col-sm-4
+            button.btn.btn-primary.js-save(type="submit") Submit

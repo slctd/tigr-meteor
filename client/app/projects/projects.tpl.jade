@@ -7,29 +7,12 @@
       li.active
         strong Projects
   .col-lg-5.text-right.m-t
-    button.btn.btn-primary.js-new-project
+    button.btn.btn-success.js-new-project
       i.fa.fa-plus
       | Create Project
 
 if projectsReady
   .wrapper.wrapper-content.animated.fadeInDown
-    #new-project.ibox.hidden
-      .ibox-title
-        h5 Add new Project
-        .ibox-tools
-          a.js-collapse-link
-            i.fa.fa-chevron-up
-          a.js-close-new(title='Close')
-            i.fa.fa-times
-      .ibox-content
-        .row
-          .col-lg-8
-            form.form-inline
-              .form-group
-                input.form-control(type='text', placeholder='Project name')
-              button.js-project-add.btn.btn-white.no-margins(type='submit')
-                i.fa.fa-plus
-                | Add Project
     +projectList
 else
   .spinner.m-b.m-t

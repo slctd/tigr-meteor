@@ -61,29 +61,10 @@ Template.projectList.helpers({
 });
 
 Template.projects.events({
-    'submit #new-project': function(event) {
-        event.preventDefault();
-
-        var $input = $(event.target).find('[type=text]');
-        if (! $input.val())
-            return;
-
-        Projects.insert({
-            name: $input.val(),
-            status: 'new',
-            createdAt: new Date()
-        });
-        $input.val('');
-    },
 
     'click .js-new-project': function() {
         $('#new-project').removeClass('hidden');
         $('.js-new-project').addClass('hidden')
-    },
-
-    'click .js-close-new': function() {
-        $('#new-project').addClass('hidden');
-        $('.js-new-project').removeClass('hidden')
     },
 
     'click .js-collapse-link': function (event) {
