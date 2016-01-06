@@ -1,4 +1,31 @@
-Template.projects.events({
+var STATUS_KEY = 'new';
+
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
+Template.newProject.helpers({
+    status: function () {
+        return Session.get(STATUS_KEY);
+    },
+    statusLabel: function () {
+        return Session.get(STATUS_KEY).capitalizeFirstLetter();
+    },
+    statusClass: function() {
+        switch (Session.get(STATUS_KEY)) {
+            case 'new':
+                return 'label label-info';
+            case 'active':
+                return 'label label-primary';
+            case 'pending':
+                return 'label label-warning';
+            default:
+                return 'label label-info';
+        }
+    }
+});
+
+Template.newProject.events({
     'submit #new-project': function (event) {
         event.preventDefault();
 
@@ -12,28 +39,24 @@ Template.projects.events({
             name: name.val(),
             about: about.val(),
             description: description.val(),
-            status: 'new',
+            status: Session.get(STATUS_KEY),
             createdAt: new Date()
         });
         name.val('');
         about.val('');
         description.val('');
+        Session.set(STATUS_KEY, 'new');
     },
 
-    'click .js-close-new': function() {
+    'click .js-close-new': function(event) {
+        event.preventDefault();
         $('#new-project').addClass('hidden');
         $('.js-new-project').removeClass('hidden')
     },
 
-    'click .js-status-active': function(event, template) {
-        statusToggle(this, template, 'active');
-    },
-
-    'click .js-status-suspended': function(event, template) {
-        statusToggle(this, template, 'suspended');
-    },
-
-    'click .js-status-closed': function(event, template) {
-        statusToggle(this, template, 'closed');
+    'click .js-status-switch': function(event) {
+        event.preventDefault();
+        var status = $(event.target).data('status');
+        Session.set(STATUS_KEY, status);
     }
 });

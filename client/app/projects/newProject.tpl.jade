@@ -22,18 +22,18 @@
                 span.caret
               ul.dropdown-menu
                 li
-                  a.js-status-active(href="#")
+                  a.js-status-switch(href="#" data-status="active")
                     i.fa.fa-circle(class="color-primary")
                     | Active
                 li
-                  a.js-status-suspended(href="#")
-                    i.fa.fa-circle(class="color-warning")
-                    | Suspended
+                  a.js-status-switch(href="#" data-status="new")
+                    i.fa.fa-circle(class="color-info")
+                    | New
                 li.devider
                 li
-                  a.js-status-closed(href="#")
-                    i.fa.fa-circle(class="color-default")
-                    | Closed
+                  a.js-status-switch(href="#" data-status="pending")
+                    i.fa.fa-circle(class="color-warning")
+                    | Pending
         .form-group.col-sm-12
           label.control-label About
           input.form-control(type='text', name='about', value='{{about}}', placeholder='About Project')
