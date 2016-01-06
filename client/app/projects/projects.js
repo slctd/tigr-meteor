@@ -70,6 +70,7 @@ Template.projects.events({
 
         Projects.insert({
             name: $input.val(),
+            status: 'new',
             createdAt: new Date()
         });
         $input.val('');

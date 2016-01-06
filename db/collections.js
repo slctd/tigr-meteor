@@ -23,5 +23,6 @@ Projects = new Mongo.Collection('projects'),
     ProjectsIndex = new EasySearch.Index({
         collection: Projects,
         fields: ['name'],
+        sort: ['createdAt'],
         engine: new EasySearch.Minimongo()
     });
