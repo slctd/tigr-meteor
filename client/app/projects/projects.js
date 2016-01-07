@@ -32,11 +32,20 @@ Template.projectList.helpers({
     }
 });
 
+var animateNew = function() {
+    $('#new-project').removeClass('hidden').addClass("animated").addClass("fadeInDown");
+    $('.js-new-project').addClass("animated").addClass("fadeOutDown");
+    setTimeout(function() {
+        $('#new-project').removeClass("animated").removeClass("fadeInDown");
+        $('.js-new-project').removeClass("animated").removeClass("fadeOutDown").addClass('hidden');
+        $('#new-project').find("[name=name]").first().focus();
+    }, 500);
+};
+
 Template.projects.events({
 
     'click .js-new-project': function() {
-        $('#new-project').removeClass('hidden');
-        $('.js-new-project').addClass('hidden')
+        animateNew();
     },
 
     'click .js-collapse-link': function (event) {
