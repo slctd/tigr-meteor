@@ -5,9 +5,6 @@ String.prototype.capitalizeFirstLetter = function() {
 };
 
 Template.newProject.helpers({
-    status: function () {
-        return Session.get(STATUS_KEY);
-    },
     statusLabel: function () {
         return Session.get(STATUS_KEY).capitalizeFirstLetter();
     },
@@ -22,6 +19,9 @@ Template.newProject.helpers({
             default:
                 return 'label label-info';
         }
+    },
+    status: function () {
+        return Session.get(STATUS_KEY);
     }
 });
 
@@ -51,6 +51,10 @@ Template.newProject.events({
     'click .js-close-new': function(event) {
         event.preventDefault();
         $('#new-project').addClass('hidden');
+        $('#new-project').find('[name=name]').val('');
+        $('#new-project').find('[name=about]').val('');
+        $('#new-project').find('[name=description]').val('');
+        Session.set(STATUS_KEY, 'new');
         $('.js-new-project').removeClass('hidden')
     },
 
