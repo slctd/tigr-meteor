@@ -2,12 +2,12 @@
   .ibox(id='project_{{id}}')
     if editing
       .ibox-content
-        form.js-edit-form
+        form.js-edit-form(role="form")
           .row
             .form-group.col-sm-12
               label.control-label Project Name
               .input-group
-                input.form-control(type='text', name='name', value='{{name}}', placeholder='Project Name')
+                input.form-control(type='text', name='name', value='{{name}}', placeholder='Project Name', required)
                 .input-group-btn
                   button.btn.btn-white.dropdown-toggle(data-toggle="dropdown" type="button")
                     if status
@@ -41,7 +41,7 @@
               .col-xs-4.col-xs-offset-2
                 button.btn.btn-default.js-cancel Cancel
               .col-xs-4
-                button.btn.btn-primary.js-save Save Changes
+                button.btn.btn-primary.js-save(type="submit") Save Changes
     else
       .ibox-title
         h5 {{name}}

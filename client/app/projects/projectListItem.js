@@ -63,8 +63,10 @@ var statusToggle = function(project, template, status) {
 };
 
 var saveProject = function(project, template) {
+    var name = template.$('[name=name]').val();
+    if (!name) return;
     Projects.update(project._id, {$set: {
-        name: template.$('[name="name"]').val(),
+        name: name,
         about: template.$('[name="about"]').val(),
         description: template.$('[name="description"]').val()
     }});
@@ -164,6 +166,7 @@ Template.projectListItem.events({
         editProject(this, template);
     },
 
+    //TODO: status wait for refactoring
     'click .js-status-active': function(event, template) {
         statusToggle(this, template, 'active');
     },
@@ -180,3 +183,20 @@ Template.projectListItem.events({
         deleteProject(this, template);
     }
 });
+
+//TODO: validation waiting for refactor to edit form layout
+Template.projectListItem.rendered = function() {
+    $("#project_" + this._id + " form").validate({
+        rules: {
+            name: {
+                required: true
+            }
+        },
+        errorPlacement: function(error, element) {
+            if (element.attr("name") == "name" )
+                error.insertAfter(".name-label");
+            else
+                error.insertAfter(element);
+        }
+    })
+};
