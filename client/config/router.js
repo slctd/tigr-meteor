@@ -53,9 +53,9 @@ Router.route('taskLists', {
 });
 
 Router.route('projects', {
-    path: '/projects/:_id',
+    path: '/projects',
     onBeforeAction: function () {
-        this.todosHandle = Meteor.subscribe('publicProjects');
+        this.projectsHandle = Meteor.subscribe('publicProjects');
 
         if (this.ready()) {
             // Handle for launch screen defined in layout
