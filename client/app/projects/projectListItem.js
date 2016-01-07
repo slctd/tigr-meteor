@@ -80,21 +80,33 @@ var cancel = function(project, template) {
 var deleteProject = function(project) {
     // ensure the last public project cannot be deleted.
     if (! project.userId && Projects.find({userId: {$exists: false}}).count() === 1) {
-        return alert("Sorry, you cannot delete the final public project!");
-    }
-
-    var message = "Are you sure you want to delete the project " + project.name + "?";
-    if (confirm(message)) {
-        // we must remove each item individually from the client
-        //Tasks.find({listId: project._id}).forEach(function(task) {
-        //    Tasks.remove(task._id);
-        //});
-        Projects.remove(project._id);
-
-        //Router.go('projects');
-        return true;
+        swal({
+            title: "Can't delete",
+            text: "Sorry, you cannot delete the final public project!",
+            type: "info",
+            confirmButtonText: "OK, I see",
+            closeOnConfirm: true
+        });
     } else {
-        return false;
+        return swal({
+                title: "Are you sure?",
+                text: "Are you sure you want to delete the project " + project.name + "?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel please!",
+                closeOnConfirm: false,
+                closeOnCancel: true },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        Projects.remove(project._id);
+                        swal("Deleted!", "Your project has been deleted.", "success");
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
     }
 };
 
