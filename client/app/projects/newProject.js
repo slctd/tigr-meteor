@@ -27,7 +27,7 @@ Template.newProject.helpers({
 
 var submitProject = function(project, template) {
     var name = template.$('[name=name]').val();
-    if (!name) return; //TODO: add form validation
+    if (!name) return;
     Projects.insert({
         name: name,
         about: template.$('[name="about"]').val(),
@@ -67,7 +67,6 @@ var animateCancel = function(event, template) {
 
 Template.newProject.events({
     'submit .js-new-form, click .js-save': function (project, template) {
-        project.preventDefault();
         submitProject(project, template);
     },
 
@@ -82,3 +81,19 @@ Template.newProject.events({
         Session.set(STATUS_KEY, status);
     }
 });
+
+Template.newProject.rendered = function() {
+    $("#new-project form").validate({
+        rules: {
+            name: {
+                required: true
+            }
+        },
+        errorPlacement: function(error, element) {
+            if (element.attr("name") == "name" )
+                error.insertAfter(".name-label");
+            else
+                error.insertAfter(element);
+        }
+    })
+};
