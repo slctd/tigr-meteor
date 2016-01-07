@@ -25,37 +25,37 @@ Template.newProject.helpers({
     }
 });
 
+var saveProject = function(project, template) {
+    var name = template.$('[name=name]').val();
+    if (!name) return;
+    Projects.insert({
+        name: name,
+        about: template.$('[name="about"]').val(),
+        description: template.$('[name="description"]').val(),
+        status: Session.get(STATUS_KEY),
+        createdAt: new Date()
+    });
+};
+
+var clearNew = function(event, template) {
+    template.$('[name="name"]').val('');
+    template.$('[name="about"]').val('');
+    template.$('[name="description"]').val('');
+    Session.set(STATUS_KEY, 'new');
+    $('#new-project').addClass('hidden');
+    $('.js-new-project').removeClass('hidden');
+};
+
 Template.newProject.events({
-    'submit #new-project': function (event) {
-        event.preventDefault();
-
-        var name = $(event.target).find('[name=name]');
-        var about = $(event.target).find('[name=about]');
-        var description = $(event.target).find('[name=description]');
-        if (!name.val())
-            return;
-
-        Projects.insert({
-            name: name.val(),
-            about: about.val(),
-            description: description.val(),
-            status: Session.get(STATUS_KEY),
-            createdAt: new Date()
-        });
-        name.val('');
-        about.val('');
-        description.val('');
-        Session.set(STATUS_KEY, 'new');
+    'submit .js-new-form, click .js-save': function (project, template) {
+        project.preventDefault();
+        saveProject(project, template);
+        clearNew(project, template);
     },
 
-    'click .js-close-new': function(event) {
+    'click .js-close-new': function(event, template) {
         event.preventDefault();
-        $('#new-project').addClass('hidden');
-        $('#new-project').find('[name=name]').val('');
-        $('#new-project').find('[name=about]').val('');
-        $('#new-project').find('[name=description]').val('');
-        Session.set(STATUS_KEY, 'new');
-        $('.js-new-project').removeClass('hidden')
+        clearNew(event, template);
     },
 
     'click .js-status-switch': function(event) {

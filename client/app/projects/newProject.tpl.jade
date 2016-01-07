@@ -7,7 +7,7 @@
       a.js-close-new(title='Close')
         i.fa.fa-times
   .ibox-content
-    form.js-edit-form
+    form.js-new-form
       .row
         .form-group.col-sm-12
           label.control-label Name
@@ -22,13 +22,13 @@
                 span.caret
               ul.dropdown-menu
                 li
-                  a.js-status-switch(href="#" data-status="active")
-                    i.fa.fa-circle(class="color-primary")
-                    | Active
-                li
                   a.js-status-switch(href="#" data-status="new")
                     i.fa.fa-circle(class="color-info")
                     | New
+                li
+                  a.js-status-switch(href="#" data-status="active")
+                    i.fa.fa-circle(class="color-primary")
+                    | Active
                 li.devider
                 li
                   a.js-status-switch(href="#" data-status="pending")
