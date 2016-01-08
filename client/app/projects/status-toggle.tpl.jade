@@ -1,0 +1,10 @@
+button.btn.btn-white.dropdown-toggle(data-toggle="dropdown" type="button")
+  if status
+    span(class='{{statusClass}}') {{statusLabel}}
+  else
+    | Status
+  span.caret
+ul.dropdown-menu
+  +statusListItem name="new"
+  +statusListItem name="active"
+  +statusListItem name="pending"

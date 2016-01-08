@@ -1,0 +1,16 @@
+button.btn.btn-white.dropdown-toggle(data-toggle="dropdown" type="button")
+  if status
+    span(class='{{statusClass}}') {{statusLabel}}
+  else
+    | Status
+  span.caret
+ul.dropdown-menu
+  if statusItems
+    each statusName in statusItems
+      +statusListItem name=statusName
+  //else
+  //  +statusListItem name="new"
+  //  +statusListItem name="pending"
+  //  +statusListItem name="active"
+  //  +statusListItem name="suspended"
+  //  +statusListItem name="closed"

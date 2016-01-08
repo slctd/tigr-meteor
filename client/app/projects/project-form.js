@@ -1,31 +1,10 @@
-var STATUS_KEY = 'new';
+var STATUS_KEY = 'PROJECT_STATUS';
 
-String.prototype.capitalizeFirstLetter = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
-Template.newProject.helpers({
-    statusLabel: function () {
-        return Session.get(STATUS_KEY).capitalizeFirstLetter();
-    },
-    statusClass: function() {
-        switch (Session.get(STATUS_KEY)) {
-            case 'new':
-                return 'label label-info';
-            case 'active':
-                return 'label label-primary';
-            case 'pending':
-                return 'label label-warning';
-            default:
-                return 'label label-info';
-        }
-    },
-    status: function () {
-        return Session.get(STATUS_KEY);
-    }
+Template.projectForm.helpers({
+    statusItems: ['new', 'pending', 'active']
 });
 
-var submitProject = function(project, template) {
+var submitProject = function(event, template) {
     var name = template.$('[name=name]').val();
     if (!name) return;
     Projects.insert({
@@ -35,7 +14,7 @@ var submitProject = function(project, template) {
         status: Session.get(STATUS_KEY),
         createdAt: new Date()
     });
-    animateSubmit(project, template);
+    animateSubmit(event, template);
 };
 
 var clearNewForm = function(event, template) {
@@ -65,9 +44,15 @@ var animateCancel = function(event, template) {
     }, 500);
 };
 
-Template.newProject.events({
-    'submit .js-new-form, click .js-save': function (project, template) {
-        submitProject(project, template);
+Template.projectForm.events({
+    'submit .js-project-form': function (event, template) {
+        event.preventDefault();
+        submitProject(event, template);
+    },
+
+    'click .js-submit': function (event, template) {
+        //event.preventDefault();
+        submitProject(event, template);
     },
 
     'click .js-close-new': function(event, template) {
@@ -75,15 +60,17 @@ Template.newProject.events({
         animateCancel(event, template);
     },
 
-    'click .js-status-switch': function(event) {
-        event.preventDefault();
-        var status = $(event.target).data('status');
-        Session.set(STATUS_KEY, status);
+    'keydown .js-project-form': function(event) {
+        // ESC or ENTER
+        if (27 === event.which || event.which === 13) {
+            event.preventDefault();
+            $(event.target).blur();
+        }
     }
 });
 
-Template.newProject.rendered = function() {
-    $("#new-project form").validate({
+Template.projectForm.rendered = function() {
+    $(".js-project-form").validate({
         rules: {
             name: {
                 required: true

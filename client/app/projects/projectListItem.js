@@ -1,9 +1,5 @@
 var EDITING_KEY = 'EDITING_PROJECT_ID';
 
-String.prototype.capitalizeFirstLetter = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
 Template.projectListItem.helpers({
     editing: function() {
         return (Session.get(EDITING_KEY) === this._id.toString()) ? true : false;
@@ -15,6 +11,8 @@ Template.projectListItem.helpers({
         switch (this.status) {
             case 'new':
                 return 'label label-info';
+            case 'pending':
+                return 'label label-warning';
             case 'active':
                 return 'label label-primary';
             case 'suspended':

@@ -3,6 +3,10 @@ var firstRender = true;
 var listRenderHold = LaunchScreen.hold();
 listFadeInHold = null;
 
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
 Template.projects.onRendered(function() {
     if (firstRender) {
         // Released in loyout
