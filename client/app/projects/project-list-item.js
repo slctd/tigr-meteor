@@ -1,11 +1,9 @@
 var EDITING_KEY = 'EDITING_PROJECT_ID';
+var STATUS_KEY = 'PROJECT_STATUS';
 
 Template.projectListItem.helpers({
     editing: function() {
         return (Session.get(EDITING_KEY) === this._id.toString()) ? true : false;
-    },
-    editingClass: function() {
-        return Session.equals(EDITING_KEY, this._id) && 'editing';
     },
     statusClass: function() {
         switch (this.status) {
@@ -48,33 +46,9 @@ var editProject = function(project, template) {
     template.$('.js-edit-form input[name="name"]').first().focus();
 };
 
-var updateProject = function(project, template, fieldName) {
-    //Session.set(EDITING_KEY, false);
-    var update = {};
-    update[fieldName] = template.$('[name="'+fieldName+'"]').val();
-    Projects.update(project._id, {$set: update});
-};
-
 var statusToggle = function(project, template, status) {
     var update = {status: status};
     Projects.update(project._id, {$set: update});
-};
-
-var saveProject = function(project, template) {
-    var name = template.$('[name=name]').val();
-    if (!name) return;
-    Projects.update(project._id, {$set: {
-        name: name,
-        about: template.$('[name="about"]').val(),
-        description: template.$('[name="description"]').val()
-    }});
-    animateSwitch(project, template);
-    Session.set(EDITING_KEY, false);
-};
-
-var cancel = function(project, template) {
-    animateSwitch(project, template);
-    Session.set(EDITING_KEY, false);
 };
 
 var deleteProject = function(project) {
@@ -111,60 +85,11 @@ var deleteProject = function(project) {
 };
 
 Template.projectListItem.events({
-    'click .js-cancel': function(event, template) {
-        cancel(this, template);
-    },
-
-    'keydown input[name=name]': function(event) {
-        // ESC or ENTER
-        if (27 === event.which || event.which === 13) {
-            event.preventDefault();
-            $(event.target).blur();
-        }
-    },
-
-    //'blur input[name="name"]': function(event, template) {
-    //    if (Session.get(EDITING_KEY))
-    //        updateProject(this, template, 'name');
-    //},
-    //
-    //'blur input[name="about"]': function(event, template) {
-    //    if (Session.get(EDITING_KEY))
-    //        updateProject(this, template, 'about');
-    //},
-    //
-    //'blur input[name="description"]': function(event, template) {
-    //    if (Session.get(EDITING_KEY))
-    //        updateProject(this, template, 'description');
-    //},
-
-    'submit .js-edit-form, click .js-save': function(event, template) {
-        event.preventDefault();
-        saveProject(this, template);
-    },
-
-    // handle mousedown otherwise the blur handler above will swallow the click
-    // on iOS, we still require the click event so handle both
-    'mousedown .js-cancel': function(event, template) {
-        event.preventDefault();
-        cancel(this, template);
-    },
-
-    'change .project-edit': function(event, template) {
-        if ($(event.target).val() === 'edit') {
-            editProject(this, template);
-        } else if ($(event.target).val() === 'delete') {
-            deleteProject(this, template);
-        }
-
-        event.target.selectedIndex = 0;
-    },
-
     'click .js-edit-project': function(event, template) {
         editProject(this, template);
     },
 
-    //TODO: status wait for refactoring
+    ////TODO: status wait for refactoring
     'click .js-status-active': function(event, template) {
         statusToggle(this, template, 'active');
     },
@@ -181,20 +106,3 @@ Template.projectListItem.events({
         deleteProject(this, template);
     }
 });
-
-//TODO: validation waiting for refactor to edit form layout
-Template.projectListItem.rendered = function() {
-    $("#project_" + this._id + " form").validate({
-        rules: {
-            name: {
-                required: true
-            }
-        },
-        errorPlacement: function(error, element) {
-            if (element.attr("name") == "name" )
-                error.insertAfter(".name-label");
-            else
-                error.insertAfter(element);
-        }
-    })
-};

@@ -1,0 +1,54 @@
+.col-lg-4.col-sm-6
+  .ibox(id='project_{{id}}' data-project-id="{{id}}")
+    if editing
+      +projectEditForm
+    else
+      .ibox-title
+        h5 {{name}}
+        .ibox-tools
+          a.js-delete-project
+            i.fa.fa-trash
+          a.js-edit-project(href="#" title="Edit")
+            i.fa.fa-pencil
+          if status
+            //TODO: refactor status toggle
+            //+statusToggle
+            a.dropdown-toggle.pull-right(data-toggle='dropdown', href='#')
+              span(class='{{statusClass}}') {{statusLabel}}
+            ul.dropdown-menu
+              li
+                a.js-status-active(href="#")
+                  i.fa.fa-circle(class="color-primary")
+                  | Active
+              li
+                a.js-status-suspended(href="#")
+                  i.fa.fa-circle(class="color-warning")
+                  | Suspended
+              li.devider
+              li
+                a.js-status-closed(href="#")
+                  i.fa.fa-circle(class="color-default")
+                  | Closed
+      .ibox-content
+        //.team-members
+        //  a(href='#')
+        //    img.img-circle(alt='member', src='img/a1.jpg')
+        h4 {{about}}
+        p {{description}}
+        //div
+        //  span Status of current project:
+        //  .stat-percent 48%
+        //  .progress.progress-mini
+        //    .progress-bar(style='width: 48%;')
+        .row.m-t-sm
+          if incompleteCount
+            .col-sm-4
+              .font-bold TASKS
+              | {{incompleteCount}}
+        //  .col-sm-4
+        //    .font-bold RANKING
+        //    |                         4th
+        //  .col-sm-4.text-right
+        //    .font-bold BUDGET
+        //    |                         $200,913
+        //    i.fa.fa-level-up.text-navy
