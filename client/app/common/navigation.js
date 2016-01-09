@@ -1,5 +1,5 @@
 Template.navigation.onRendered(function() {
-    this.find('#content-container')._uihooks = {
+    $('#content-container')._uihooks = {
         insertElement: function(node, next) {
             $(node)
                 .hide()
