@@ -7,10 +7,4 @@ button.btn.btn-white.dropdown-toggle(data-toggle="dropdown" type="button")
 ul.dropdown-menu
   if statusItems
     each statusName in statusItems
-      +statusListItem name=statusName
-  //else
-  //  +statusListItem name="new"
-  //  +statusListItem name="pending"
-  //  +statusListItem name="active"
-  //  +statusListItem name="suspended"
-  //  +statusListItem name="closed"
+      +statusSelectItem statusName=statusName

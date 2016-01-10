@@ -24,6 +24,9 @@ Template.projectListItem.helpers({
     statusLabel: function() {
         return this.status.capitalizeFirstLetter();
     },
+    statusItems: function() {
+        return ['active', 'suspended', 'closed']
+    },
     id: function() {
         return this._id;
     },
@@ -48,11 +51,6 @@ var editProject = function(project, template) {
     Session.set(EDITING_KEY, project._id);
     Session.set(STATUS_KEY, project.status);
     animateOpenEditForm(project, template);
-};
-
-var statusToggle = function(project, template, status) {
-    var update = {status: status};
-    Projects.update(project._id, {$set: update});
 };
 
 var deleteProject = function(project) {
@@ -91,19 +89,6 @@ var deleteProject = function(project) {
 Template.projectListItem.events({
     'click .js-edit-project': function(event, template) {
         editProject(this, template);
-    },
-
-    ////TODO: status wait for refactoring
-    'click .js-status-active': function(event, template) {
-        statusToggle(this, template, 'active');
-    },
-
-    'click .js-status-suspended': function(event, template) {
-        statusToggle(this, template, 'suspended');
-    },
-
-    'click .js-status-closed': function(event, template) {
-        statusToggle(this, template, 'closed');
     },
 
     'click .js-delete-project': function(event, template) {

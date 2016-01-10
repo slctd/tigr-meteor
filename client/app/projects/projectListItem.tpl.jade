@@ -12,24 +12,11 @@
           a.js-edit-project(href="#" title="Edit")
             i.fa.fa-pencil
           if status
-            //TODO: refactor status toggle
-            //+statusToggle statusClass=statusClass statusLabel=statusLabel
             a.dropdown-toggle.pull-right(data-toggle='dropdown', href='#')
               span(class='{{statusClass}}') {{statusLabel}}
             ul.dropdown-menu
-              li
-                a.js-status-active(href="#")
-                  i.fa.fa-circle(class="color-primary")
-                  | Active
-              li
-                a.js-status-suspended(href="#")
-                  i.fa.fa-circle(class="color-warning")
-                  | Suspended
-              li.devider
-              li
-                a.js-status-closed(href="#")
-                  i.fa.fa-circle(class="color-default")
-                  | Closed
+              each statusName in statusItems
+                +statusToggleItem statusName=statusName projectId=id
       .ibox-content
         //.team-members
         //  a(href='#')

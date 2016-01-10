@@ -30,9 +30,6 @@ Template.projects.helpers({
 });
 
 var animateNew = function() {
-    // force the template to redraw based on the reactive change
-    Tracker.flush();
-
     $('#project_new').removeClass('hidden').addClass("animated").addClass("fadeInDown");
     $('.js-new-project').addClass("animated").addClass("fadeOutDown");
     setTimeout(function() {

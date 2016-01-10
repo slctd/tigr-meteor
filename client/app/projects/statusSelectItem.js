@@ -1,11 +1,11 @@
 var STATUS_KEY = 'PROJECT_STATUS';
 
-Template.statusListItem.helpers({
+Template.statusSelectItem.helpers({
     statusLabel: function () {
-        return this.name.capitalizeFirstLetter();
+        return this.statusName.capitalizeFirstLetter();
     },
     statusClass: function() {
-        switch (this.name) {
+        switch (this.statusName) {
             case 'new':
                 return 'color-info';
             case 'pending':
@@ -22,7 +22,7 @@ Template.statusListItem.helpers({
     }
 });
 
-Template.statusListItem.events({
+Template.statusSelectItem.events({
     'click .js-status-switch': function(event) {
         event.preventDefault();
         var status = $(event.target).data('status');
