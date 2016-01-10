@@ -26,15 +26,19 @@ Template.projectListItem.helpers({
     },
     id: function() {
         return this._id;
+    },
+    project: function() {
+        return this;
     }
 });
 
-var animateSwitch = function(project, template) {
+var animateOpenEditForm = function(project, template) {
     var panel = template.$('#project_' + project._id);
     panel.addClass("animated").addClass("flipInY");
     setTimeout(function() {
         panel.removeClass("animated").removeClass("flipInY");
-    }, 1500);
+        template.find('.js-project-form input[name="name"]').focus();
+    }, 1000);
 };
 
 var editProject = function(project, template) {
@@ -42,8 +46,8 @@ var editProject = function(project, template) {
     Tracker.flush();
 
     Session.set(EDITING_KEY, project._id);
-    animateSwitch(project, template);
-    template.$('.js-edit-form input[name="name"]').first().focus();
+    Session.set(STATUS_KEY, project.status);
+    animateOpenEditForm(project, template);
 };
 
 var statusToggle = function(project, template, status) {

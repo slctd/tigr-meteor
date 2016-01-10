@@ -1,3 +1,4 @@
+var EDITING_KEY = 'EDITING_PROJECT_ID';
 // Track if this is the first time the list template is rendered
 var firstRender = true;
 var listRenderHold = LaunchScreen.hold();
@@ -27,22 +28,17 @@ Template.projects.helpers({
         return Router.current().projectsHandle.ready();
     }
 });
-Template.projectList.helpers({
-    projectsIndex: function() {
-        return ProjectsIndex;
-    },
-    inputAttributes: function () {
-        return { 'class': 'input-sm form-control', 'placeholder': 'Search in Projects' };
-    }
-});
 
 var animateNew = function() {
-    $('#new-project').removeClass('hidden').addClass("animated").addClass("fadeInDown");
+    // force the template to redraw based on the reactive change
+    Tracker.flush();
+
+    $('#project_new').removeClass('hidden').addClass("animated").addClass("fadeInDown");
     $('.js-new-project').addClass("animated").addClass("fadeOutDown");
     setTimeout(function() {
-        $('#new-project').removeClass("animated").removeClass("fadeInDown");
+        $('#project_new').removeClass("animated").removeClass("fadeInDown");
         $('.js-new-project').removeClass("animated").removeClass("fadeOutDown").addClass('hidden');
-        $('#new-project').find("[name=name]").first().focus();
+        $('#project_new').find("[name=name]").first().focus();
     }, 500);
 };
 

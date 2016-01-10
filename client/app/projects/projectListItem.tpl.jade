@@ -1,7 +1,8 @@
 .col-lg-4.col-sm-6
   .ibox(id='project_{{id}}' data-project-id="{{id}}")
     if editing
-      +projectEditForm
+      with project
+        +projectForm
     else
       .ibox-title
         h5 {{name}}
@@ -12,7 +13,7 @@
             i.fa.fa-pencil
           if status
             //TODO: refactor status toggle
-            //+statusToggle
+            //+statusToggle statusClass=statusClass statusLabel=statusLabel
             a.dropdown-toggle.pull-right(data-toggle='dropdown', href='#')
               span(class='{{statusClass}}') {{statusLabel}}
             ul.dropdown-menu

@@ -1,8 +1,33 @@
+var EDITING_KEY = 'EDITING_PROJECT_ID';
 var STATUS_KEY = 'PROJECT_STATUS';
 
 Template.projectForm.helpers({
-    statusItems: ['new', 'pending', 'active']
+    statusItems: function() {
+        return Session.get(EDITING_KEY) === 'new' ? ['new', 'pending', 'active'] : ['active', 'suspended', 'closed']
+    },
+    saveLabel: function() {
+        return Session.get(EDITING_KEY) === 'new' ? 'Submit' : 'Save Changes'
+    },
+    formTitle: function() {
+        return Session.get(EDITING_KEY) === 'new' ? 'Add new Project' : 'Edit Project'
+    }
 });
+
+var validateProject = function(form) {
+    form.validate({
+        rules: {
+            name: {
+                required: true
+            }
+        },
+        errorPlacement: function (error, element) {
+            if (element.attr("name") == "name")
+                error.insertAfter(".name-label");
+            else
+                error.insertAfter(element);
+        }
+    });
+};
 
 var submitProject = function(event, template) {
     var name = template.$('[name=name]').val();
@@ -17,47 +42,81 @@ var submitProject = function(event, template) {
     animateSubmit(event, template);
 };
 
-var clearNewForm = function(event, template) {
+var resetForm = function(event, template) {
     template.$('[name="name"]').val('');
     template.$('[name="about"]').val('');
     template.$('[name="description"]').val('');
     Session.set(STATUS_KEY, 'new');
+    Session.set(EDITING_KEY, 'new');
 };
 
 var animateSubmit = function(event, template) {
-    $('#new-project').addClass("animated").addClass("bounceOut");
+    $('#project_new').addClass("animated").addClass("bounceOut");
     $('.js-new-project').removeClass('hidden').addClass("animated").addClass("fadeInUp");
     setTimeout(function() {
-        $('#new-project').removeClass("animated").removeClass("bounceOut").addClass('hidden');
+        $('#project_new').removeClass("animated").removeClass("bounceOut").addClass('hidden');
         $('.js-new-project').removeClass("animated").removeClass("fadeInUp");
-        clearNewForm(event, template);
+        resetForm(event, template);
     }, 500);
 };
 
-var animateCancel = function(event, template) {
-    $('#new-project').addClass("animated").addClass("fadeOutUp");
+var animateCloseNewForm = function(event, template) {
+    $('#project_new').addClass("animated").addClass("fadeOutUp");
     $('.js-new-project').removeClass('hidden').addClass("animated").addClass("fadeInUp");
     setTimeout(function() {
-        $('#new-project').removeClass("animated").removeClass("fadeOutUp").addClass('hidden');
+        $('#project_new').removeClass("animated").removeClass("fadeOutUp").addClass('hidden');
         $('.js-new-project').removeClass("animated").removeClass("fadeInUp");
-        clearNewForm(event, template);
+        resetForm(event, template);
     }, 500);
+};
+
+var animateCloseEditForm = function(project) {
+    var panel = $('#project_' + project._id);
+    panel.addClass("animated").addClass("flipInY");
+    setTimeout(function() {
+        panel.removeClass("animated").removeClass("flipInY");
+    }, 1000);
+    Session.set(EDITING_KEY, 'new');
+    Session.set(STATUS_KEY, 'new');
+};
+
+var saveProject = function(project, template) {
+    var name = template.$('[name=name]').val();
+    if (!name) return;
+    Projects.update(project._id, {$set: {
+        name: name,
+        about: template.$('[name="about"]').val(),
+        description: template.$('[name="description"]').val(),
+        status: Session.get(STATUS_KEY)
+    }});
+    animateCloseEditForm(project, template);
+};
+
+var saveAction = function(event, template, project) {
+    if(Session.get(EDITING_KEY) === 'new') {
+        submitProject(event, template);
+    } else if(Session.get(EDITING_KEY)) {
+        saveProject(project, template);
+    }
 };
 
 Template.projectForm.events({
     'submit .js-project-form': function (event, template) {
         event.preventDefault();
-        submitProject(event, template);
+        saveAction(event, template, this);
     },
 
-    'click .js-submit': function (event, template) {
-        //event.preventDefault();
-        submitProject(event, template);
+    'click .js-save': function (event, template) {
+        validateProject(template);
     },
 
-    'click .js-close-new': function(event, template) {
-        event.preventDefault();
-        animateCancel(event, template);
+    'click .js-cancel': function(event, template) {
+        if(Session.get(EDITING_KEY) === 'new') {
+            animateCloseNewForm(event, template);
+        } else if(Session.get(EDITING_KEY)) {
+            animateCloseEditForm(this, template);
+        }
+
     },
 
     'keydown .js-project-form': function(event) {
@@ -70,17 +129,6 @@ Template.projectForm.events({
 });
 
 Template.projectForm.rendered = function() {
-    $(".js-project-form").validate({
-        rules: {
-            name: {
-                required: true
-            }
-        },
-        errorPlacement: function(error, element) {
-            if (element.attr("name") == "name" )
-                error.insertAfter(".name-label");
-            else
-                error.insertAfter(element);
-        }
-    })
+    var form = $("#project_" + Session.get(EDITING_KEY) + ' .js-project-form');
+    validateProject(form);
 };

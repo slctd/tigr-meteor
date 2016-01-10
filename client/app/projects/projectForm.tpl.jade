@@ -1,10 +1,10 @@
 .ibox
   .ibox-title
-    h5 Add new Project
+    h5 {{formTitle}}
     .ibox-tools
       a.js-collapse-link
         i.fa.fa-chevron-up
-      a.js-close-new(title='Close')
+      a.js-cancel(title='Close')
         i.fa.fa-times
   .ibox-content
     form.js-project-form(role="form")
@@ -23,6 +23,6 @@
           textarea.form-control(type='text', name='description', placeholder='Project Description') {{description}}
         .form-group.col-sm-12
           .col-sm-4.col-sm-offset-2
-            button.btn.btn-default.js-close-new(type="button") Cancel
+            button.btn.btn-default.js-cancel(type="button") Cancel
           .col-sm-4
-            button.btn.btn-primary.js-submit(type="submit") Submit
+            button.btn.btn-primary.js-save(type="submit") {{saveLabel}}
