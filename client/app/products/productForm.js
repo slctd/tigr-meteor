@@ -32,6 +32,8 @@ var submitProduct = function(event, template) {
         name: name,
         about: template.$('[name="about"]').val(),
         price: template.$('[name="price"]').val(),
+        category: template.$('[name="category"]').val(),
+        image: template.$('[name="image"]').val(),
         createdAt: new Date()
     });
     animateSubmit(event, template);
@@ -41,6 +43,8 @@ var resetForm = function(event, template) {
     template.$('[name="name"]').val('');
     template.$('[name="about"]').val('');
     template.$('[name="price"]').val('');
+    template.$('[name="category"]').val('');
+    template.$('[name="image"]').val('');
     Session.set(STATUS_KEY, 'new');
     Session.set(EDITING_KEY, 'new');
 };
@@ -81,7 +85,9 @@ var saveProduct = function(product, template) {
     Products.update(product._id, {$set: {
         name: name,
         about: template.$('[name="about"]').val(),
-        price: template.$('[name="price"]').val()
+        price: template.$('[name="price"]').val(),
+        category: template.$('[name="category"]').val(),
+        image: template.$('[name="image"]').val()
     }});
     animateCloseEditForm(product, template);
 };

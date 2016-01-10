@@ -5,15 +5,21 @@ div(class="{{productClass}}")
         +productForm
     else
       .ibox-content.product-box
-        .product-imitation
-          | [ INFO ]
+        if image
+            img.img-responsive(src="{{image}}")
+        else
+            .product-imitation
+              | {{about}}
         .product-desc
-          span.product-price
-            | {{priceFormatted}}
-          small.text-muted {{category}}
+          if price
+            span.product-price
+              | {{priceFormatted}}
+          if category
+            small.text-muted {{category}}
           a.product-name(href='#') {{name}}
-          .small.m-t-xs
-            | {{about}}
+          if image
+            .small.m-t-xs
+              | {{about}}
           .m-t.text-righ
             a.btn.btn-xs.btn-outline.btn-primary(href='#')
               | Info
