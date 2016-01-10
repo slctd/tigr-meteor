@@ -12,6 +12,18 @@
       else
         li
           span.m-r-sm.text-muted.welcome-message  Welcome to EveMt cloud service.
+      li.language.dropdown(dropdown)
+        a.dropdown-toggle.count-info(href="#" data-toggle="dropdown" data-i18n='taskstopnav.language')
+          | Language
+        ul.dropdown-menu.animated.fadeInDown.m-t-xs
+          li.set_en
+            a
+              img(src="img/flags/16/United-States.png")
+              | English
+          li.set_ru
+            a
+              img(src="img/flags/16/Russia.png")
+              | Русский
       li
         if currentUser
           a.js-logout(href="{{pathFor 'signin'}}")

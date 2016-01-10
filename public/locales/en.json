@@ -30,8 +30,14 @@
     "welcome": "Welcome Amelia"
 
   },
+  "taskstopnav":{
+    "messageinfo": "You have 42 messages and 6 notifications.",
+    "search": "Search for something...",
+    "logout": "Log out",
+    "welcometext": "Welcome to INSPINIA+ Admin Theme.",
+    "language": "Language"
+  },
   "topnav":{
-
     "messageinfo": "You have 42 messages and 6 notifications.",
     "search": "Search for something...",
     "logout": "Log out",
