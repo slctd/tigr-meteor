@@ -27,12 +27,14 @@
     "package": "Packages"
   },
   "body":{
-    "welcome": "Welcome Amelia"
-
+    "welcome": "Welcome Amelia",
+    "search": "Search",
+    "info": "Info",
   },
   "taskstopnav":{
     "messageinfo": "You have 42 messages and 6 notifications.",
     "search": "Search for something...",
+    "login": "Log in",
     "logout": "Log out",
     "welcometext": "Welcome to INSPINIA+ Admin Theme.",
     "language": "Language"
@@ -40,13 +42,27 @@
   "topnav":{
     "messageinfo": "You have 42 messages and 6 notifications.",
     "search": "Search for something...",
+    "login": "Log in",
     "logout": "Log out",
     "welcometext": "Welcome to INSPINIA+ Admin Theme.",
     "language": "Language"
   },
   "demo":{
     "text1": "Internationalization (sometimes shortened to \"I18N , meaning \"I - eighteen letters -N\") is the process of planning and implementing products and services so that they can easily be adapted to specific local languages and cultures, a process called localization . The internationalization process is sometimes called translation or localization enablement ."
+  },
+  "form":{
+    "name": "Name",
+    "about": "About",
+    "price": "Price",
+    "category": "Category",
+    "image": "Image",
+    "cancel": "Cancel",
+    "save": "Save",
+    "submit": "Submit"
+  },
+  "products":{
+    "new_title": "Add new Product",
+    "edit_title": "Edit Product",
+    "create": "Create Product"
   }
-
-
 }

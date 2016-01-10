@@ -16,6 +16,7 @@ Template.tasksTopNavbar.rendered = function(){
         $('.i18container').i18n();
         $('#side-menu').i18n();
         $('.navbar-top-links').i18n();
+        $('#wrapper').i18n();
     });
 
 
@@ -24,6 +25,7 @@ Template.tasksTopNavbar.rendered = function(){
             $('.i18container').i18n();
             $('#side-menu').i18n();
             $('.navbar-top-links').i18n();
+            $('#wrapper').i18n();
 
             $('.set_en').addClass('active');
             $('.set_ru').removeClass('active');
@@ -35,6 +37,7 @@ Template.tasksTopNavbar.rendered = function(){
             $('.i18container').i18n();
             $('#side-menu').i18n();
             $('.navbar-top-links').i18n();
+            $('#wrapper').i18n();
 
             $('.set_ru').addClass('active');
             $('.set_en').removeClass('active');

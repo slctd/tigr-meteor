@@ -11,7 +11,7 @@
             span.label.label-primary {{tasksCount}}
       else
         li
-          span.m-r-sm.text-muted.welcome-message  Welcome to EveMt cloud service.
+          span.m-r-sm.text-muted.welcome-message(data-i18n='taskstopnav.welcometext') Welcome to EveMt cloud service.
       li.language.dropdown(dropdown)
         a.dropdown-toggle.count-info(href="#" data-toggle="dropdown" data-i18n='taskstopnav.language')
           | Language
@@ -26,10 +26,10 @@
               | Русский
       li
         if currentUser
-          a.js-logout(href="{{pathFor 'signin'}}")
+          a.js-logout(href="{{pathFor 'signin'}}" data-i18n='taskstopnav.logout')
             i.fa.fa-sign-out
             |  Log out
         else
-          a(href="{{pathFor 'signin'}}")
+          a(href="{{pathFor 'signin'}}" data-i18n='taskstopnav.login')
             i.fa.fa-sign-in
             |  Log in

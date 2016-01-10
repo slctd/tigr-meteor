@@ -1,11 +1,8 @@
 var EDITING_KEY = 'EDITING_PRODUCT_ID';
 
 Template.productForm.helpers({
-    formTitle: function() {
-        return Session.get(EDITING_KEY) === 'new' ? 'Add new Product' : 'Edit Product'
-    },
-    saveLabel: function() {
-        return Session.get(EDITING_KEY) === 'new' ? 'Submit' : 'Save Changes'
+    newProduct: function() {
+        return Session.get(EDITING_KEY) === 'new'
     }
 });
 
@@ -131,4 +128,15 @@ Template.productForm.events({
 Template.productForm.rendered = function() {
     var form = $("#product_" + Session.get(EDITING_KEY) + ' .js-product-form');
     validateProduct(form);
+
+    // i18n
+
+    $.i18n.init({
+        resGetPath: 'locales/__lng__.json',
+        load: 'unspecific',
+        fallbackLng: false,
+        lng: 'ru'
+    }, function (t){
+        $('.ibox').i18n();
+    });
 };

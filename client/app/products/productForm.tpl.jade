@@ -1,6 +1,9 @@
 .ibox
   .ibox-title
-    h5 {{formTitle}}
+    if newProduct
+      h5(data-i18n='products.new_title') Add new Product
+    else
+      h5(data-i18n='products.edit_title') Edit Product
     .ibox-tools
       a.js-collapse-link
         i.fa.fa-chevron-up
@@ -10,22 +13,25 @@
     form.js-product-form(role="form")
       .row
         .form-group.col-sm-12
-          label.name-label.control-label Name
+          label.name-label.control-label(data-i18n='form.name') Name
           input.form-control(type='text', name='name', value='{{name}}', placeholder='Product Name', required)
         .form-group.col-sm-12
-          label.control-label About
+          label.control-label(data-i18n='form.name') About
           input.form-control(type='text', name='about', value='{{about}}', placeholder='About Product')
         .form-group.col-sm-12
-          label.control-label Price
+          label.control-label(data-i18n='form.price') Price
           input.form-control(type='text', name='price', value='{{price}}', placeholder='Product Price')
         .form-group.col-sm-12
-          label.control-label Category
+          label.control-label(data-i18n='form.category') Category
           input.form-control(type='text', name='category', value='{{category}}', placeholder='Product Category')
         .form-group.col-sm-12
-          label.control-label Image
+          label.control-label(data-i18n='form.image') Image
           input.form-control(type='text', name='image', value='{{image}}', placeholder='Product Image')
         .form-group.col-sm-12
           .col-sm-4.col-sm-offset-2
-            button.btn.btn-default.js-cancel(type="button") Cancel
+            button.btn.btn-default.js-cancel(type="button" data-i18n='form.cancel') Cancel
           .col-sm-4
-            button.btn.btn-primary.js-save(type="submit") {{saveLabel}}
+            if newProduct
+              button.btn.btn-primary.js-save(type="submit" data-i18n='form.submit') Submit
+            else
+              button.btn.btn-primary.js-save(type="submit" data-i18n='form.save') Save Changes

@@ -3,7 +3,7 @@
     .input-group
       | {{> EasySearch.Input index=productsIndex attributes=inputAttributes }}
       .input-group-btn
-        button.btn.btn-sm.btn-primary(type='submit')
+        button.btn.btn-sm.btn-primary(type='submit' data-i18n='body.search')
           | Search
 .row.products-grid
   #product_new.col-md-6.hidden {{>productForm}}
