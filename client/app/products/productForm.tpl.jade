@@ -1,0 +1,25 @@
+.ibox
+  .ibox-title
+    h5 {{formTitle}}
+    .ibox-tools
+      a.js-collapse-link
+        i.fa.fa-chevron-up
+      a.js-cancel(title='Close')
+        i.fa.fa-times
+  .ibox-content
+    form.js-product-form(role="form")
+      .row
+        .form-group.col-sm-12
+          label.name-label.control-label Name
+          input.form-control(type='text', name='name', value='{{name}}', placeholder='Product Name', required)
+        .form-group.col-sm-12
+          label.control-label About
+          input.form-control(type='text', name='about', value='{{about}}', placeholder='About Product')
+        .form-group.col-sm-12
+          label.control-label Price
+          input.form-control(type='text', name='price', value='{{price}}', placeholder='Product Price')
+        .form-group.col-sm-12
+          .col-sm-4.col-sm-offset-2
+            button.btn.btn-default.js-cancel(type="button") Cancel
+          .col-sm-4
+            button.btn.btn-primary.js-save(type="submit") {{saveLabel}}

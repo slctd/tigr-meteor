@@ -1,3 +1,5 @@
+var EDITING_KEY = 'EDITING_PRODUCT_ID';
+
 // Track if this is the first time the list template is rendered
 var firstRender = true;
 var listRenderHold = LaunchScreen.hold();
@@ -17,6 +19,7 @@ Template.products.onRendered(function() {
 
         firstRender = false;
     }
+    Session.set(EDITING_KEY, 'new');
 });
 
 Template.products.helpers({
@@ -29,18 +32,18 @@ Template.products.helpers({
 });
 
 var animateNew = function() {
-    $('#project_new').removeClass('hidden').addClass("animated").addClass("fadeInDown");
-    $('.js-new-project').addClass("animated").addClass("fadeOutDown");
+    $('#product_new').removeClass('hidden').addClass("animated").addClass("fadeInDown");
+    $('.js-new-product').addClass("animated").addClass("fadeOutDown");
     setTimeout(function() {
-        $('#project_new').removeClass("animated").removeClass("fadeInDown");
-        $('.js-new-project').removeClass("animated").removeClass("fadeOutDown").addClass('hidden');
-        $('#project_new').find("[name=name]").first().focus();
+        $('#product_new').removeClass("animated").removeClass("fadeInDown");
+        $('.js-new-product').removeClass("animated").removeClass("fadeOutDown").addClass('hidden');
+        $('#product_new').find("[name=name]").first().focus();
     }, 500);
 };
 
 Template.products.events({
 
-    'click .js-new-project': function() {
+    'click .js-new-product': function() {
         animateNew();
     },
 
