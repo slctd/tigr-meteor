@@ -1,20 +1,12 @@
 // Page heading
-+pageHeading title="Products Greed" category="Products"
++pageHeading title="Products Grid" category="Products"
+
 .wrapper.wrapper-content.animated.fadeInRight
-  .row
-    .col-md-3
-      .ibox
-        .ibox-content.product-box
-          .product-imitation
-            | [ INFO ]
-          .product-desc
-            span.product-price
-              | $10
-            small.text-muted Category
-            a.product-name(href='#')  Product
-            .small.m-t-xs
-              | Many desktop publishing packages and web page editors now.
-            .m-t.text-righ
-              a.btn.btn-xs.btn-outline.btn-primary(href='#')
-                | Info
-                i.fa.fa-long-arrow-right
+  if productsReady
+    .wrapper.wrapper-content.animated.fadeInRight
+      +productsGrid
+  else
+    .spinner.m-b.m-t
+      .sk-spinner.sk-spinner-wandering-cubes
+        .sk-cube1
+        .sk-cube2

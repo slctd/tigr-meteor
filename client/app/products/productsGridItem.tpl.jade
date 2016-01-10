@@ -1,0 +1,20 @@
+.col-md-3
+  .ibox(id='product_{{id}}' data-product-id="{{id}}")
+    if editing
+      //with product
+      //  +productForm
+    else
+      .ibox-content.product-box
+        .product-imitation
+          | [ INFO ]
+        .product-desc
+          span.product-price
+            | {{priceFormatted}}
+          small.text-muted {{category}}
+          a.product-name(href='#') {{name}}
+          .small.m-t-xs
+            | {{about}}
+          .m-t.text-righ
+            a.btn.btn-xs.btn-outline.btn-primary(href='#')
+              | Info
+              i.fa.fa-long-arrow-right
