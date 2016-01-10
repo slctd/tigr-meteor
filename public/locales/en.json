@@ -3,6 +3,7 @@
     "name": "EveMt"
   },
   "nav":{
+    "home": "Home",
     "taskLists": "Task Lists",
     "projects": "Projects",
     "products": "Products",
@@ -63,6 +64,8 @@
   "products":{
     "new_title": "Add new Product",
     "edit_title": "Edit Product",
-    "create": "Create Product"
+    "create": "Create Product",
+    "title": "Products Grid",
+    "category": "Products"
   }
 }

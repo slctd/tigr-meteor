@@ -16,6 +16,6 @@ Template.productsGrid.rendered = function() {
         fallbackLng: false,
         lng: 'ru'
     }, function (t){
-        $('.products-grid').i18n();
+        $('.row').i18n();
     });
 };
