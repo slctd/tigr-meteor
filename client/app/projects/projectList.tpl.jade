@@ -1,0 +1,10 @@
+.row.m-b
+  .col-xs-12
+    .input-group
+      | {{> EasySearch.Input index=projectsIndex attributes=inputAttributes }}
+      .input-group-btn
+        button.btn.btn-sm.btn-primary(type='submit')
+          | Search
+.row.project-list
+  #project_new.col-lg-4.col-sm-6.hidden {{>projectForm}}
+  | {{#EasySearch.Each index=projectsIndex }}{{>projectListItem}}{{/EasySearch.Each}}
