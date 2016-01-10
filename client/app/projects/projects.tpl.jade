@@ -1,11 +1,6 @@
 .row.wrapper.border-bottom.white-bg.page-heading
   .col-lg-7.pull-left
-    h2 Projects List
-    ol.breadcrumb
-      li
-        a(href="{{pathFor home}}") Home
-      li.active
-        strong Projects
+    +pageTitle title="Projects List" category="Projects"
   .col-lg-5.text-right.m-t
     button.btn.btn-success.js-new-project
       i.fa.fa-plus

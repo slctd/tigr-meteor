@@ -1,0 +1,11 @@
+h2 {{title}}
+ol.breadcrumb
+  li
+    a(href='{{pathFor home}}') Home
+  if category
+    li.active
+      strong
+        a {{category}}
+  else
+    li.active
+      strong {{title}}
