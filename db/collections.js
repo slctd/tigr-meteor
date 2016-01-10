@@ -26,3 +26,11 @@ Projects = new Mongo.Collection('projects'),
         sort: ['createdAt'], //TODO: order latest first
         engine: new EasySearch.Minimongo()
     });
+
+Products = new Mongo.Collection('products'),
+    ProductsIndex = new EasySearch.Index({
+        collection: Products,
+        fields: ['name'],
+        sort: ['createdAt'],
+        engine: new EasySearch.Minimongo()
+    });

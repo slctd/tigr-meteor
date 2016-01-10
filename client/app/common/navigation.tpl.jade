@@ -44,6 +44,10 @@ nav.navbar-default.navbar-static-side(role='navigation')
         a(href="{{pathFor 'projects'}}")
           i.fa.fa-briefcase
           span.nav-label(data-i18n='nav.projects') Projects
+      li(class="{{isActiveRoute regex='products'}}")
+        a(href="{{pathFor 'products'}}")
+          i.fa.fa-shopping-cart
+          span.nav-label(data-i18n='nav.products') Products
       li(class="{{isActiveRoute regex='dashboard1|dashboard2|dashboard3|dashboard4l|dashboard5'}}")
         a(href='#')
           i.fa.fa-th-large

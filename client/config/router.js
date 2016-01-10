@@ -67,6 +67,21 @@ Router.route('projects', {
     }
 });
 
+Router.route('products', {
+    path: '/products',
+    onBeforeAction: function () {
+        this.productsHandle = Meteor.subscribe('publicProducts');
+
+        if (this.ready()) {
+            // Handle for launch screen defined in layout
+            dataReadyHold.release();
+        }
+    },
+    action: function () {
+        this.render();
+    }
+});
+
 Router.route('home', {
     path: '/',
     layoutTemplate: 'tasksLayout',

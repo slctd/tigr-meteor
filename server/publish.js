@@ -27,3 +27,15 @@ Meteor.publish('privateProjects', function() {
     this.ready();
   }
 });
+
+Meteor.publish('publicProducts', function() {
+  return Products.find({userId: {$exists: false}})
+});
+
+Meteor.publish('companyProducts', function() {
+  if (this.companyId) {
+    return Products.find({companyId: this.companyId})
+  } else {
+    this.ready();
+  }
+});
