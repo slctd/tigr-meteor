@@ -81,8 +81,7 @@ var saveProduct = function(product, template) {
     Products.update(product._id, {$set: {
         name: name,
         about: template.$('[name="about"]').val(),
-        price: template.$('[name="price"]').val(),
-        status: Session.get(STATUS_KEY)
+        price: template.$('[name="price"]').val()
     }});
     animateCloseEditForm(product, template);
 };

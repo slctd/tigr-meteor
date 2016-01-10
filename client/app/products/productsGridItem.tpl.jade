@@ -1,8 +1,8 @@
-.col-md-3
+div(class="{{productClass}}")
   .ibox(id='product_{{id}}' data-product-id="{{id}}")
     if editing
-      //with product
-      //  +productForm
+      with product
+        +productForm
     else
       .ibox-content.product-box
         .product-imitation
@@ -18,3 +18,5 @@
             a.btn.btn-xs.btn-outline.btn-primary(href='#')
               | Info
               i.fa.fa-long-arrow-right
+            a.js-edit-product.pull-right.color-default(href="#" title="Edit")
+              i.fa.fa-pencil
