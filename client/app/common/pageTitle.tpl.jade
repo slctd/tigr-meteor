@@ -1,11 +1,12 @@
-h2(data-i18n='products.title') {{title}}
+//TODO: translate page title
+h2 {{_ 'products.title'}}
 ol.breadcrumb
   li
-    a(href='{{pathFor home}}' data-i18n='nav.home') Home
+    a(href='{{pathFor home}}') {{_ 'nav.home'}}
   if category
     li.active
       strong
-        a(data-i18n='products.category') {{category}}
+        a {{_ 'nav.products'}}
   else
     li.active
-      strong(data-i18n='products.title') {{title}}
+      strong {{_ 'products.title'}}

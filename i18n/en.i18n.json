@@ -30,7 +30,8 @@
   "body":{
     "welcome": "Welcome Amelia",
     "search": "Search",
-    "info": "Info"
+    "info": "Info",
+    "edit": "Edit"
   },
   "topnav":{
     "messageinfo": "You have 42 messages and 6 notifications.",
@@ -54,10 +55,16 @@
     "submit": "Submit"
   },
   "products":{
+    "object": "Product",
+    "create": "Create Product",
     "new_title": "Add new Product",
     "edit_title": "Edit Product",
-    "create": "Create Product",
     "title": "Products Grid",
-    "category": "Products"
+    "name": "Product Name",
+    "about": "About Product",
+    "price": "Product Price",
+    "category": "Product Category",
+    "image": "Product Image",
+    "search": "Search in Products"
   }
 }

@@ -1,9 +1,9 @@
 .ibox
   .ibox-title
     if newProduct
-      h5(data-i18n='products.new_title') Add new Product
+      h5 {{_ 'products.new_title'}}
     else
-      h5(data-i18n='products.edit_title') Edit Product
+      h5 {{_ 'products.edit_title'}}
     .ibox-tools
       a.js-collapse-link
         i.fa.fa-chevron-up
@@ -13,25 +13,25 @@
     form.js-product-form(role="form")
       .row
         .form-group.col-sm-12
-          label.name-label.control-label(data-i18n='form.name') Name
-          input.form-control(type='text', name='name', value='{{name}}', placeholder='Product Name', required)
+          label.name-label.control-label {{_ 'form.name'}}
+          input.form-control(type='text', name='name', value='{{name}}', placeholder="{{_ 'products.name'}}", required)
         .form-group.col-sm-12
-          label.control-label(data-i18n='form.about') About
-          input.form-control(type='text', name='about', value='{{about}}', placeholder='About Product')
+          label.control-label {{_ 'form.about'}}
+          input.form-control(type='text', name='about', value='{{about}}', placeholder="{{_ 'products.about'}}")
         .form-group.col-sm-12
-          label.control-label(data-i18n='form.price') Price
-          input.form-control(type='text', name='price', value='{{price}}', placeholder='Product Price')
+          label.control-label {{_ 'form.price'}}
+          input.form-control(type='text', name='price', value='{{price}}', placeholder="{{_ 'products.price'}}")
         .form-group.col-sm-12
-          label.control-label(data-i18n='form.category') Category
-          input.form-control(type='text', name='category', value='{{category}}', placeholder='Product Category')
+          label.control-label {{_ 'form.category'}}
+          input.form-control(type='text', name='category', value='{{category}}', placeholder="{{_ 'products.category'}}")
         .form-group.col-sm-12
-          label.control-label(data-i18n='form.image') Image
-          input.form-control(type='text', name='image', value='{{image}}', placeholder='Product Image')
+          label.control-label {{_ 'form.image'}}
+          input.form-control(type='text', name='image', value='{{image}}', placeholder="{{_ 'products.image'}}")
         .form-group.col-sm-12
           .col-sm-4.col-sm-offset-2
-            button.btn.btn-default.js-cancel(type="button" data-i18n='form.cancel') Cancel
+            button.btn.btn-default.js-cancel(type="button" ) {{_ 'form.cancel'}}
           .col-sm-4
             if newProduct
-              button.btn.btn-primary.js-save(type="submit" data-i18n='form.submit') Submit
+              button.btn.btn-primary.js-save(type="submit" ) {{_ 'form.submit'}}
             else
-              button.btn.btn-primary.js-save(type="submit" data-i18n='form.save') Save Changes
+              button.btn.btn-primary.js-save(type="submit" ) {{_ 'form.save'}}

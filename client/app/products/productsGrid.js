@@ -3,6 +3,6 @@ Template.productsGrid.helpers({
         return ProductsIndex;
     },
     inputAttributes: function () {
-        return { 'class': 'input-sm form-control', 'placeholder': 'Search in Products' };
+        return { 'class': 'input-sm form-control', 'placeholder': TAPi18n.__('products.search') };
     }
 });
