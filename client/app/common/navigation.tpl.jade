@@ -25,8 +25,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li.list-todos
         a(href='#')
           i.fa.fa-check-square
-          span.nav-label(data-i18n='nav.taskLists')
-            | Task Lists
+          span.nav-label {{_ 'nav.taskLists'}}
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='lists' className='in'}}")
           each lists
@@ -43,15 +42,15 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='projects'}}")
         a(href="{{pathFor 'projects'}}")
           i.fa.fa-briefcase
-          span.nav-label(data-i18n='nav.projects') Projects
+          span.nav-label {{_ 'nav.projects'}}
       li(class="{{isActiveRoute regex='products'}}")
         a(href="{{pathFor 'products'}}")
           i.fa.fa-shopping-cart
-          span.nav-label(data-i18n='nav.products') Products
+          span.nav-label {{_ 'nav.products'}}
       li(class="{{isActiveRoute regex='dashboard1|dashboard2|dashboard3|dashboard4l|dashboard5'}}")
         a(href='#')
           i.fa.fa-th-large
-          span.nav-label(data-i18n='nav.dashboard') Dashboards
+          span.nav-label {{_ 'nav.dashboard'}}
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='dashboard1|dashboard2|dashboard3|dashboard4l|dashboard5' className='in'}}")
           li(class="{{isActiveRoute regex='dashboard1'}}")
@@ -69,11 +68,11 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='layouts'}}")
         a(href="{{pathFor 'layouts'}}")
           i.fa.fa-diamond
-          span.nav-label(data-i18n='nav.layouts') Layouts
+          span.nav-label {{_ 'nav.layouts'}}
       li(class="{{isActiveRoute regex='c3charts|graphFlot|graphMorris|graphRickshaw|graphChartJs|graphPeity|graphSparkline|graphChartist'}}")
         a(href='#')
           i.fa.fa-bar-chart-o
-          span.nav-label(data-i18n='nav.graphs') Graphs
+          span.nav-label {{_ 'nav.graphs'}}
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='c3charts|graphFlot|graphMorris|graphRickshaw|graphChartJs|graphPeity|graphSparkline|graphChartist' className='in'}}")
           li(class="{{isActiveRoute regex='graphFlot'}}")
@@ -93,7 +92,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='mailbox|emailView|emailCompose|emailTemplates'}}")
         a(href='#')
           i.fa.fa-envelope
-          span.nav-label(data-i18n='nav.mailbox') Mailbox
+          span.nav-label {{_ 'nav.mailbox'}}
           span.label.label-warning.pull-right 16/24
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='mailbox|emailView|emailCompose|emailTemplates' className='in'}}")
           li(class="{{isActiveRoute regex='mailbox'}}")
@@ -107,15 +106,15 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='metrics'}}")
         a(href="{{pathFor 'metrics'}}")
           i.fa.fa-pie-chart
-          span.nav-label(data-i18n='nav.metrics') Metrics
+          span.nav-label {{_ 'nav.metrics'}}
       li(class="{{isActiveRoute regex='widgets'}}")
         a(href="{{pathFor 'widgets'}}")
           i.fa.fa-flask
-          span.nav-label(data-i18n='nav.widgets') Widgets
+          span.nav-label {{_ 'nav.widgets'}}
       li(class="{{isActiveRoute regex='markdown|formBasic|formAdvanced|formWizard|formUpload|textEditor'}}")
         a(href='#')
           i.fa.fa-edit
-          span.nav-label(data-i18n='nav.forms') Forms
+          span.nav-label {{_ 'nav.forms'}}
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='markdown|formBasic|formAdvanced|formWizard|formUpload|textEditor' className='in'}}")
           li(class="{{isActiveRoute regex='formBasic'}}")
@@ -133,7 +132,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='contacts2|profile2|voteList|contacts|profile|projectDetail|teamsBoard|clients|fullHeight|fileManager|calendar|issueTracker|blog|article|faq|timelineOne|pinBoard|socialFeed'}}")
         a(href='#')
           i.fa.fa-desktop
-          span.nav-label(data-i18n='nav.appviews') App Views
+          span.nav-label {{_ 'nav.appviews'}}
           span.pull-right.label.label-primary SPECIAL
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='contacts2|profile2|voteList|contacts|profile|projectDetail|teamsBoard|clients|fullHeight|fileManager|Calendar|issueTracker|blog|article|faq|timelineOne|pinBoard|socialFeed' className='in'}}")
           li(class="{{isActiveRoute regex='contacts'}}")
@@ -177,7 +176,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='searchResult|invoice|emptyPage'}}")
         a(href='#')
           i.fa.fa-files-o
-          span.nav-label(data-i18n='nav.otherpages') Other Pages
+          span.nav-label {{_ 'nav.otherpages'}}
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='searchResult|invoice|emptyPage' className='in'}}")
           li(class="{{isActiveRoute regex='searchResult'}}")
@@ -203,7 +202,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='clipboard|i18support|tour|truncate|loadingButtons|masonry|toastrNotification|nestableList|agileBoard|timelineTwo|diff|idleTimer|spinners|liveFavicon|googleMaps|codeEditor|modalWindow|forumView|validation|treeView|chatView|sweetAlert'}}")
         a(href='#')
           i.fa.fa-globe
-          span.nav-label(data-i18n='nav.miscellaneous') Miscellaneous
+          span.nav-label {{_ 'nav.miscellaneous'}}
           span.label.label-info.pull-right NEW
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='clipboard|i18support|tour|truncate|loadingButtons|masonry|toastrNotification|nestableList|agileBoard|timelineTwo|diff|idleTimer|spinners|liveFavicon|googleMaps|codeEditor|modalWindow|forumView|validation|treeView|chatView|sweetAlert' className='in'}}")
           li(class="{{isActiveRoute regex='toastrNotification'}}")
@@ -253,7 +252,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='resizeablePanels|typography|icons|draggablePanels|buttons|video|tabsPanels|notifications|badgesLabels|tabs'}}")
         a(href='#')
           i.fa.fa-flask
-          span.nav-label(data-i18n='nav.uielements') UI Elements
+          span.nav-label {{_ 'nav.uielements'}}
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='resizeablePanels|typography|icons|draggablePanels|buttons|video|tabsPanels|notifications|badgesLabels|tabs' className='in'}}")
           li(class="{{isActiveRoute regex='typography'}}")
@@ -279,11 +278,11 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='gridOptions'}}")
         a(href="{{pathFor 'gridOptions'}}")
           i.fa.fa-laptop
-          span.nav-label(data-i18n='nav.gridoptions') Grid options
+          span.nav-label {{_ 'nav.gridoptions'}}
       li(class="{{isActiveRoute regex='tableStatic|dataTables|fooTables'}}")
         a(href='#')
           i.fa.fa-table
-          span.nav-label(data-i18n='nav.tables') Tables
+          span.nav-label {{_ 'nav.tables'}}
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='tableStatic|dataTables|fooTables' className='in'}}")
           li(class="{{isActiveRoute regex='tableStatic'}}")
@@ -295,7 +294,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='shopingCart|productDetail|payments|productsGrid|productsList|productEdit|orders'}}")
         a(href='#')
           i.fa.fa-shopping-cart
-          span.nav-label(data-i18n='nav.ecommerce') E-commerce
+          span.nav-label {{_ 'nav.ecommerce'}}
           span.fa.arrow
         ul.nav.nav-second-level(class="{{isActiveRoute regex='shopingCart|productDetail|payments|productsGrid|productsList|productEdit|orders' className='in'}}")
           //li(class="{{isActiveRoute regex='productsGrid'}}")
@@ -315,7 +314,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='slick|gallery|carusela'}}")
         a(href='#')
           i.fa.fa-picture-o
-          span.nav-label(data-i18n='nav.gallery') Gallery
+          span.nav-label {{_ 'nav.gallery'}}
           span.fa.arrow
         ul.nav.nav-second-level.collapse(class="{{isActiveRoute regex='slick|gallery|carusela' className='in'}}")
           li(class="{{isActiveRoute regex='gallery'}}")
@@ -327,7 +326,7 @@ nav.navbar-default.navbar-static-side(role='navigation')
       //li
       //  a(href='#')
       //    i.fa.fa-sitemap
-      //    span.nav-label(data-i18n='nav.menulevels') Menu Levels
+      //    span.nav-label {{_ 'nav.menulevels'}}
       //    span.fa.arrow
       //  ul.nav.nav-second-level
       //    li
@@ -350,9 +349,9 @@ nav.navbar-default.navbar-static-side(role='navigation')
       li(class="{{isActiveRoute regex='cssAnimations'}}")
         a(href="{{pathFor 'cssAnimations'}}")
           i.fa.fa-magic
-          span.nav-label(data-i18n='nav.animations') CSS Animations
+          span.nav-label {{_ 'nav.animations'}}
           span.label.label-info.pull-right 62
       //li.special_link
       //  a(href="{{pathFor 'landing'}}")
       //    i.fa.fa-database
-      //    span.nav-label(data-i18n='nav.landing') Landing page
+      //    span.nav-label {{_ 'nav.landing'}}

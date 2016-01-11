@@ -61,16 +61,3 @@ Template.products.events({
         }, 50);
     }
 });
-
-Template.products.rendered = function() {
-    // i18n
-
-    $.i18n.init({
-        resGetPath: 'locales/__lng__.json',
-        load: 'unspecific',
-        fallbackLng: false,
-        lng: 'ru'
-    }, function (t){
-        $('.page-heading').i18n();
-    });
-};

@@ -30,22 +30,14 @@
   "body":{
     "welcome": "Welcome Amelia",
     "search": "Search",
-    "info": "Info",
-  },
-  "taskstopnav":{
-    "messageinfo": "You have 42 messages and 6 notifications.",
-    "search": "Search for something...",
-    "login": "Log in",
-    "logout": "Log out",
-    "welcometext": "Welcome to INSPINIA+ Admin Theme.",
-    "language": "Language"
+    "info": "Info"
   },
   "topnav":{
     "messageinfo": "You have 42 messages and 6 notifications.",
     "search": "Search for something...",
     "login": "Log in",
     "logout": "Log out",
-    "welcometext": "Welcome to INSPINIA+ Admin Theme.",
+    "welcometext": "Welcome to EveMt.",
     "language": "Language"
   },
   "demo":{

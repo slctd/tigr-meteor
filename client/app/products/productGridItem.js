@@ -77,16 +77,3 @@ Template.productsGridItem.events({
         deleteProduct(this, template);
     }
 });
-
-Template.productsGridItem.rendered = function() {
-    // i18n
-
-    $.i18n.init({
-        resGetPath: 'locales/__lng__.json',
-        load: 'unspecific',
-        fallbackLng: false,
-        lng: 'ru'
-    }, function (t){
-        $('.ibox').i18n();
-    });
-};

@@ -128,15 +128,4 @@ Template.productForm.events({
 Template.productForm.rendered = function() {
     var form = $("#product_" + Session.get(EDITING_KEY) + ' .js-product-form');
     validateProduct(form);
-
-    // i18n
-
-    $.i18n.init({
-        resGetPath: 'locales/__lng__.json',
-        load: 'unspecific',
-        fallbackLng: false,
-        lng: 'ru'
-    }, function (t){
-        $('.ibox').i18n();
-    });
 };
