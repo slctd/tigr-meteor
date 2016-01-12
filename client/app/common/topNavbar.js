@@ -1,3 +1,9 @@
+//var setLang = function(lang) {
+//    TAPi18n.setLanguage(lang);
+//    $('.lang').removeClass('active');
+//    $('.js-lang-' + lang).addClass('active');
+//};
+
 Template.topNavbar.rendered = function(){
 
     // FIXED TOP NAVBAR OPTION
@@ -6,14 +12,16 @@ Template.topNavbar.rendered = function(){
     // $(".navbar-static-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
 
     // i18n
-    $('.set_en a').on('click', function (){
-        TAPi18n.setLanguage('en');
-    });
-
-    $('.set_ru a').on('click', function (){
-        TAPi18n.setLanguage('ru');
-    });
-
+    //$('.lang').removeClass('active');
+    //setLang(TAPi18n.getLanguage());
+    //
+    //$('.js-lang-en a').on('click', function (){
+    //    setLang('en');
+    //});
+    //
+    //$('.js-lang-ru a').on('click', function (){
+    //    setLang('ru');
+    //});
 };
 
 Template.topNavbar.events({
@@ -50,5 +58,14 @@ Template.topNavbar.events({
     // Toggle right sidebar
     'click .right-sidebar-toggle': function(){
         $('#right-sidebar').toggleClass('sidebar-open');
+    },
+
+    'click .js-logout': function() {
+        Meteor.logout();
+        // if we are on a private list, we'll need to go to a public one
+        var current = Router.current();
+        if (current.route.name === 'taskLists' && current.data().userId) {
+            Router.go('taskLists', TaskLists.findOne({userId: {$exists: false}}));
+        }
     }
 });

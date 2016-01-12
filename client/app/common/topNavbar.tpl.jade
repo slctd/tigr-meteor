@@ -12,17 +12,8 @@
       else
         li
           span.m-r-sm.text-muted.welcome-message {{_ 'topnav.welcometext'}}
-      li.language.dropdown(dropdown)
-        a.dropdown-toggle.count-info(href="#" data-toggle="dropdown") {{_ 'topnav.language'}}
-        ul.dropdown-menu.animated.fadeInDown.m-t-xs
-          li.set_en
-            a
-              img(src="img/flags/16/United-States.png")
-              | English
-          li.set_ru
-            a
-              img(src="img/flags/16/Russia.png")
-              | Русский
+      li.language.dropdown(dropdown='')
+        +langToggle
       li
         if currentUser
           a.js-logout(href="{{pathFor 'signin'}}")
