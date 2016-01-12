@@ -33,6 +33,14 @@ Template.taskLists.onRendered(function() {
 });
 
 Template.taskLists.helpers({
+  title: function () {
+    return TAPi18n.__('taskLists.title');
+  },
+
+  category: function () {
+    return TAPi18n.__('nav.tasks');
+  },
+
   editing: function() {
     return Session.get(EDITING_KEY);
   },

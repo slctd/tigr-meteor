@@ -4,7 +4,7 @@
   },
   "nav":{
     "home": "Главная",
-    "taskLists": "Списки задач",
+    "tasks": "Задачи",
     "projects": "Проекты",
     "products": "Продукты",
     "dashboard": "Сводка",
@@ -53,6 +53,12 @@
     "cancel": "Отменить",
     "save": "Сохранить",
     "submit": "Добавить"
+  },
+  "taskLists":{
+    "title": "Списки задач"
+  },
+  "projects":{
+    "title": "Список проектов"
   },
   "products":{
     "object": "Продукт",

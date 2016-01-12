@@ -4,7 +4,7 @@
   },
   "nav":{
     "home": "Home",
-    "taskLists": "Task Lists",
+    "tasks": "Tasks",
     "projects": "Projects",
     "products": "Products",
     "dashboard": "Dashboards",
@@ -53,6 +53,12 @@
     "cancel": "Cancel",
     "save": "Save",
     "submit": "Submit"
+  },
+  "taskLists":{
+    "title": "Task Lists"
+  },
+  "projects":{
+    "title": "Projects List"
   },
   "products":{
     "object": "Product",

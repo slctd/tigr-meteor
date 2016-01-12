@@ -21,6 +21,9 @@ Template.projects.onRendered(function() {
 });
 
 Template.projects.helpers({
+    title: function () {
+        return TAPi18n.__('projects.title');
+    },
     projects: function () {
         return Projects.find();
     },

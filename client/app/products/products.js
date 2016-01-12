@@ -23,6 +23,9 @@ Template.products.onRendered(function() {
 });
 
 Template.products.helpers({
+    title: function () {
+        return TAPi18n.__('products.title');
+    },
     products: function () {
         return Products.find();
     },

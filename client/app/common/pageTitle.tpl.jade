@@ -1,12 +1,7 @@
-//TODO: translate page title
-h2 {{_ 'products.title'}}
+h2 {{ title }}
 ol.breadcrumb
   li
     a(href='{{pathFor home}}') {{_ 'nav.home'}}
-  if category
-    li.active
-      strong
-        a {{_ 'nav.products'}}
-  else
-    li.active
-      strong {{_ 'products.title'}}
+  li.active
+    strong
+      a(href='#') {{ categoryLabel }}
