@@ -30,3 +30,8 @@ accounts-password
 mquandalle:jade
 easy:search
 tap:i18n
+cfs:standard-packages
+cfs:filesystem
+raix:ui-dropped-event
+cfs:ui
+cfs:graphicsmagick
