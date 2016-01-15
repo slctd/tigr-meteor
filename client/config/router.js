@@ -71,7 +71,7 @@ Router.route('products', {
     path: '/products',
     onBeforeAction: function () {
         this.productsHandle = Meteor.subscribe('publicProducts');
-
+        this.productsImagesHandle = Meteor.subscribe('productsImages');
         if (this.ready()) {
             // Handle for launch screen defined in layout
             dataReadyHold.release();

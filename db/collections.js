@@ -34,3 +34,6 @@ Products = new Mongo.Collection('products'),
         sort: ['createdAt'],
         engine: new EasySearch.Minimongo()
     });
+
+ProductsImagesStore = new FS.Store.FileSystem('products');
+ProductsImages = new FS.Collection('productsImages', { stores: [ProductsImagesStore] });

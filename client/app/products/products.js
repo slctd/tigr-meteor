@@ -30,7 +30,7 @@ Template.products.helpers({
         return Products.find();
     },
     productsReady: function() {
-        return Router.current().productsHandle.ready();
+        return Router.current().productsHandle.ready() && Router.current().productsImagesHandle.ready();
     }
 });
 

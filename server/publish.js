@@ -45,3 +45,5 @@ var Images = new FS.Collection("images", {
 });
 
 Meteor.publish('images', function(){ return Images.find(); });
+
+Meteor.publish('productsImages', function(){ return ProductsImages.find(); });

@@ -1,28 +1,24 @@
 div(class="{{productClass}}")
   .ibox(id='product_{{id}}' data-product-id="{{id}}")
-    if editing
-      with product
+    with product
+      if editing
         +productForm
-    else
-      .ibox-content.product-box
-        if image
-            img.img-responsive(src="{{image}}")
-        else
-            .product-imitation
-              | {{about}}
-        .product-desc
-          if price
-            span.product-price
-              | {{priceFormatted}}
-          if category
-            small.text-muted {{category}}
-          a.product-name(href='#') {{name}}
-          if image
-            .small.m-t-xs
-              | {{about}}
-          .m-t.text-righ
-            a.btn.btn-xs.btn-outline.btn-primary(href='#')
-              span {{_ 'body.info'}}
-              i.fa.fa-long-arrow-right
-            a.js-edit-product.pull-right.color-default(href="#" title="{{_ 'body.edit'}}")
-              i.fa.fa-pencil
+      else
+        .ibox-content.product-box
+          +productImage
+          .product-desc
+            if price
+              span.product-price
+                | {{priceFormatted}}
+            if category
+              small.text-muted {{category}}
+            a.product-name(href='#') {{name}}
+            if image
+              .small.m-t-xs
+                | {{about}}
+            .m-t.text-righ
+              a.btn.btn-xs.btn-outline.btn-primary(href='#')
+                span {{_ 'body.info'}}
+                i.fa.fa-long-arrow-right
+              a.js-edit-product.pull-right.color-default(href="#" title="{{_ 'body.edit'}}")
+                i.fa.fa-pencil

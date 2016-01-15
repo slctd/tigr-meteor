@@ -1,0 +1,7 @@
+if this.imageId
+  .dnd.min-height
+    with FS.GetFile "productsImages" this.imageId
+      img.img-responsive(src="{{this.url}}" alt="")
+else
+  .product-imitation.dnd
+    | {{about}}
