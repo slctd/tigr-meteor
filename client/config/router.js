@@ -596,8 +596,17 @@ Router.route('payments', function () {
 // Gallery
 //
 
-Router.route('gallery', function () {
-    this.render('gallery');
+Router.route('gallery', {
+    path: '/gallery',
+        waitOn: function () {
+        return Meteor.subscribe('images')
+    },
+    action: function () {
+        if (this.ready())
+            this.render('gallery');
+        else
+            this.render('loading');
+    }
 });
 
 Router.route('carusela', function () {

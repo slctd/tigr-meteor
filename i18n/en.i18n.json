@@ -72,5 +72,8 @@
     "category": "Product Category",
     "image": "Product Image",
     "search": "Search in Products"
+  },
+  "gallery":{
+    "title": "Photo Thumbs"
   }
 }

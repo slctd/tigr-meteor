@@ -1,0 +1,39 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-7.pull-left
+    +pageTitle title=title
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          h5 Dropzone Area
+          +iboxTools
+        .ibox-content
+          h2 Lightbox image gallery
+          p
+            strong blueimp Gallery
+            | is a touch-enabled, responsive and customizable image & video gallery, carousel and lightbox, optimized for both mobile and desktop web browsers.
+            | It features swipe, mouse and keyboard navigation, transition effects, slideshow functionality, fullscreen support and on-demand content loading and can be extended to display additional content types.
+            | Full documentation you can find at:
+            a(href="https://github.com/blueimp/Gallery/blob/master/README.md" target="_blank")
+              | https://github.com/blueimp/Gallery/blob/master/README.md
+          .lightBoxGallery.dropzone
+            div(style='text-align: center; color: gray;') Drop file or click to upload
+              input.file.inline.js-file-upload(type='file', multiple='')
+            .row
+              each images
+                unless this.isUploaded
+                  +FS.UploadProgressBar bootstrap=true
+                .col-md-3
+                  a(href='{{url}}', data-gallery='')
+                    img.img-responsive(src='{{url store=thumbs}}', alt='')
+                  +FS.DeleteButton class='btn btn-xs btn-danger js-file-remove'
+            // The Gallery as lightbox dialog, should be a child element of the document body
+            #blueimp-gallery.blueimp-gallery
+              .slides
+              h3.title
+              a.prev &lsaquo;
+              a.next &rsaquo;
+              a.close &times;
+              a.play-pause
+              ol.indicator

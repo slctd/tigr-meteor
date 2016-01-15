@@ -39,3 +39,9 @@ Meteor.publish('companyProducts', function() {
     this.ready();
   }
 });
+
+var Images = new FS.Collection("images", {
+    stores: [new FS.Store.FileSystem("images"), new FS.Store.FileSystem("thumbs")]
+});
+
+Meteor.publish('images', function(){ return Images.find(); });
